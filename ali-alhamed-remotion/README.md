@@ -13,8 +13,8 @@ This is the full horizontal YouTube edit in the **Kinetic Chapter Frame — Arab
 ## Setup
 ```bash
 npm install
-# The source video must be at public/source.mp4
-# (this is "ali alhamed test.mp4", already included in the zip).
+# Copy the source video (not included: 176 MB) to public/source.mp4
+cp "../ali alhamed 1/ali alhamed test.mp4" public/source.mp4
 node scripts/make-sfx.mjs   # (re)generates the synthesized SFX kit in public/sfx (already included)
 ```
 Fonts (Cairo and Tajawal) are installed locally from `@fontsource`, so rendering needs no network.
