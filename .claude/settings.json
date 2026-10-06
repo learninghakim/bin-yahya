@@ -11,12 +11,22 @@
     "remotion@remotion": true
   },
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/telegram-notify.sh\" --init"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/hooks/telegram-notify.sh"
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/telegram-notify.sh\""
           }
         ]
       }
