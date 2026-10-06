@@ -9,5 +9,17 @@
   },
   "enabledPlugins": {
     "remotion@remotion": true
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/telegram-notify.sh"
+          }
+        ]
+      }
+    ]
   }
 }
