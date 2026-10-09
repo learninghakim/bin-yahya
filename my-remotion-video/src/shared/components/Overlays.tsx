@@ -1,5 +1,5 @@
 import { AbsoluteFill, useCurrentFrame } from "remotion";
-import { theme } from "../theme";
+import { baseTheme as theme } from "../theme";
 import { filmGrain } from "./textures";
 
 /** Unifies every layer into one navy look. Sits above content, below grain. */

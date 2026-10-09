@@ -1,10 +1,10 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { theme } from "../theme";
-import { Ring, Sparks } from "../components/Chalk";
-import { Cursor } from "../components/Icons";
-import { CLAMP, useBreath, useProgress, useSeconds, useSpringAt } from "../components/motion";
-import { Paper } from "../components/Paper";
-import { paperNoise } from "../components/textures";
+import { Ring, Sparks } from "../../../shared/components/Chalk";
+import { Cursor } from "../../../shared/components/Icons";
+import { CLAMP, useBreath, useProgress, useSeconds, useSpringAt } from "../../../shared/components/motion";
+import { Paper } from "../../../shared/components/Paper";
+import { paperNoise } from "../../../shared/components/textures";
 
 const { colors, fonts } = theme;
 const BTN = { w: 800, h: 180, y: 820 };

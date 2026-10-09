@@ -1,11 +1,11 @@
 import { getLength, getPointAtLength } from "@remotion/paths";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { theme } from "../theme";
-import { ChalkLine, DashedArrow, Ring, Sparks } from "../components/Chalk";
-import { Bulb, Pencil } from "../components/Icons";
-import { CLAMP, useBreath, useExit, useProgress, useSeconds, useSpringAt } from "../components/motion";
-import { Paper, Tape } from "../components/Paper";
-import { WordReveal } from "../components/WordReveal";
+import { ChalkLine, DashedArrow, Ring, Sparks } from "../../../shared/components/Chalk";
+import { Bulb, Pencil } from "../../../shared/components/Icons";
+import { CLAMP, useBreath, useExit, useProgress, useSeconds, useSpringAt } from "../../../shared/components/motion";
+import { Paper, Tape } from "../../../shared/components/Paper";
+import { WordReveal } from "../../../shared/components/WordReveal";
 
 const { colors, fonts } = theme;
 

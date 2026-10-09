@@ -1,5 +1,5 @@
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { theme } from "../theme";
+import { baseTheme as theme } from "../theme";
 
 type SpringConfig = (typeof theme.spring)[keyof typeof theme.spring];
 

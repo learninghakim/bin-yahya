@@ -1,9 +1,9 @@
 // Single source of truth for colors, type, easings and spring presets.
-// Palette is taken from the reference collage (references/r1.png):
+// Palette is taken from the reference collage (clients/abdullah-almashhor/references/r1.png):
 // navy chalkboard, teal + mustard paper cut-outs, off-white paper, chalk white.
 import { Easing } from "remotion";
 
-export const theme = {
+export const baseTheme = {
   colors: {
     bg: "#0B1628",
     bgDeep: "#050A14",

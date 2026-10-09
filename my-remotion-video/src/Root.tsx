@@ -1,8 +1,8 @@
 import "./index.css";
 import "./fonts";
 import { Composition } from "remotion";
-import { StudyReel } from "./StudyReel";
-import { VIDEO } from "./theme";
+import { StudyReel } from "./clients/abdullah-almashhor/StudyReel";
+import { VIDEO } from "./shared/theme";
 
 export const RemotionRoot: React.FC = () => {
   return (

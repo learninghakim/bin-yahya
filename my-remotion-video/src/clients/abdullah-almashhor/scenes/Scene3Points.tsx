@@ -1,9 +1,9 @@
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { theme } from "../theme";
-import { ChalkLine, DashedArrow, Ring } from "../components/Chalk";
-import { Gear, QuestionIcon, RepeatIcon, TargetIcon } from "../components/Icons";
-import { useExit, useSeconds } from "../components/motion";
-import { Paper, Tape } from "../components/Paper";
+import { ChalkLine, DashedArrow, Ring } from "../../../shared/components/Chalk";
+import { Gear, QuestionIcon, RepeatIcon, TargetIcon } from "../../../shared/components/Icons";
+import { useExit, useSeconds } from "../../../shared/components/motion";
+import { Paper, Tape } from "../../../shared/components/Paper";
 
 const { colors, fonts } = theme;
 
