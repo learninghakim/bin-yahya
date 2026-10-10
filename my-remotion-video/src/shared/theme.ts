@@ -1,5 +1,5 @@
 // Single source of truth for colors, type, easings and spring presets.
-// Palette is taken from the reference collage (clients/abdullah-almashhor/references/r1.png):
+// Palette from the original reference collage (since removed; new style references pending):
 // navy chalkboard, teal + mustard paper cut-outs, off-white paper, chalk white.
 import { Easing } from "remotion";
 
