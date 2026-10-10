@@ -47,38 +47,61 @@ const shown = (c: { from: number; to: number; text: string }) =>
   );
 const CUES = timing.cues.filter(shown);
 
-/** Plain caption at the bottom of the safe area for the spoken words that are not animated. */
+/**
+ * Caption for the spoken words that are not animated: IBM Plex Sans Arabic SemiBold, no box.
+ * Readability comes from a soft bottom gradient + shadow; words appear as they are spoken.
+ */
 export const Captions: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
   const c = CUES.find((q) => t >= q.from && t < q.to);
-  if (!c) return null;
-  const local = frame - Math.round(c.from * fps);
-  const p = spring({ frame: local, fps, config: theme.spring.snappy });
   return (
-    <AbsoluteFill style={{ alignItems: "center", justifyContent: "flex-start" }}>
-      <div
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
+      <AbsoluteFill
         style={{
-          position: "absolute",
-          top: 1420,
-          direction: "rtl",
-          maxWidth: 800,
-          padding: "10px 30px 16px",
-          borderRadius: 14,
-          background: "rgba(4, 8, 15, 0.62)",
-          fontFamily: fonts.display,
-          fontWeight: 700,
-          fontSize: 54,
-          lineHeight: 1.4,
-          color: colors.chalk,
-          textAlign: "center",
-          opacity: interpolate(p, [0, 1], [0, 1], CLAMP),
-          transform: `translateY(${interpolate(p, [0, 1], [14, 0])}px) scale(${interpolate(p, [0, 1], [0.94, 1])})`,
+          background: "linear-gradient(180deg, transparent 62%, rgba(4,10,22,0.55) 78%, rgba(4,10,22,0.7) 100%)",
+
         }}
-      >
-        {c.text}
-      </div>
+      />
+      {c ? (
+        <div
+          style={{
+            position: "absolute",
+            top: 1410,
+            left: 140,
+            right: 140,
+            display: "flex",
+            direction: "rtl",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            columnGap: 14,
+            fontFamily: fonts.caption,
+            fontWeight: 600,
+            fontSize: 52,
+            lineHeight: 1.45,
+            color: colors.chalk,
+            textShadow: "0 2px 3px rgba(0,0,0,0.7), 0 6px 22px rgba(0,0,0,0.6)",
+          }}
+        >
+          {c.text.split(" ").map((w, i, all) => {
+            const start = Math.round(c.from * fps) + Math.round((((c.to - c.from) * fps) / all.length) * i * 0.8);
+            const p = spring({ frame: frame - start, fps, config: theme.spring.snappy });
+            return (
+              <span
+                key={i}
+                style={{
+                  display: "inline-block",
+                  opacity: interpolate(p, [0, 1], [0.0, 1], CLAMP),
+                  transform: `translateY(${interpolate(p, [0, 1], [12, 0])}px)`,
+                }}
+              >
+                {w}
+              </span>
+            );
+          })}
+        </div>
+      ) : null}
     </AbsoluteFill>
   );
 };

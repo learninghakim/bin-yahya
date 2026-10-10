@@ -24,6 +24,8 @@ export const baseTheme = {
     // Arabic and Latin subsets are separate files; the browser falls back per glyph.
     display: "Cairo, CairoLatin, sans-serif",
     label: "ReemKufi, ReemKufiLatin, Cairo, sans-serif",
+    headline: "NotoKufi, NotoKufiLatin, Cairo, sans-serif",
+    caption: "PlexArabic, PlexArabicLatin, Cairo, sans-serif",
   },
   ease: {
     out: Easing.bezier(0.16, 1, 0.3, 1),

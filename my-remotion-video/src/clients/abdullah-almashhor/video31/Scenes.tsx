@@ -110,7 +110,7 @@ const S3: React.FC = () => {
           justifyContent: "center",
           flexDirection: "column",
           color: colors.teal,
-          fontFamily: fonts.display,
+          fontFamily: fonts.headline,
           fontWeight: 900,
           fontSize: 60,
           opacity: Math.min(1, p * 1.5) * (1 - doubt * 0.75),
@@ -172,7 +172,7 @@ const S4b: React.FC = () => {
               }}
             >
               <Paper width={W} height={H} color={colors.paper} seed="mastery">
-                <span style={{ fontFamily: fonts.display, fontWeight: 900, fontSize: 150, color: colors.ink, direction: "rtl" }}>
+                <span style={{ fontFamily: fonts.headline, fontWeight: 900, fontSize: 150, color: colors.ink, direction: "rtl" }}>
                   الإتقان
                 </span>
               </Paper>
@@ -192,7 +192,7 @@ const S4b: React.FC = () => {
       >
         <Paper width={440} height={420} color={colors.chalk} seed="exam">
           <div style={{ width: 340, direction: "rtl" }}>
-            <div style={{ fontFamily: fonts.display, fontWeight: 900, fontSize: 44, color: colors.ink, marginBottom: 18, textAlign: "center" }}>اختبار حقيقي</div>
+            <div style={{ fontFamily: fonts.headline, fontWeight: 900, fontSize: 44, color: colors.ink, marginBottom: 18, textAlign: "center" }}>اختبار حقيقي</div>
             {[0, 1, 2, 3].map((r) => (
               <div key={r} style={{ display: "flex", alignItems: "center", gap: 18, marginBottom: 22 }}>
                 <div style={{ width: 34, height: 34, border: `5px solid ${colors.ink}`, borderRadius: 6 }} />
@@ -352,7 +352,7 @@ const S7: React.FC = () => {
           <Card key={i} x={p.x} y={p.y} w={210} h={200} seed={`type-${i}`} at={at(22.7) + i * 5} out={at(27.78)} color={t.color} rot={(i - 1) * 6}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Glyph kind={t.kind} size={96} />
-              <span style={{ fontFamily: fonts.display, fontWeight: 800, fontSize: 40, color: colors.ink, marginTop: -4 }}>{t.label}</span>
+              <span style={{ fontFamily: fonts.headline, fontWeight: 800, fontSize: 40, color: colors.ink, marginTop: -4 }}>{t.label}</span>
             </div>
           </Card>
         );

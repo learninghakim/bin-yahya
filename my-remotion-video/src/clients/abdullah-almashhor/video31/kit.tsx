@@ -62,75 +62,98 @@ export const Card: React.FC<{
   );
 };
 
-/** Keyword line: words spring in one by one (whole words — Arabic shaping intact). */
+/**
+ * Headline keywords: Noto Kufi Black, cream with a soft cast shadow; the accent word is filled
+ * with a gold-leaf gradient and gets a hand-drawn gold underline. A blurred navy pool behind the
+ * line keeps it readable over the white thobe without a hard box. Words animate as whole units.
+ */
 export const Keyword: React.FC<{
   words: string[];
   at: number;
   out: number;
   y: number;
   size?: number;
-  hl?: number[]; // indexes of words shown on a gold/cyan paper strip
+  hl?: number[];
   hlColor?: string;
 }> = ({ words, at, out, y, size = 104, hl = [], hlColor = colors.yellow }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const o = useOut(out);
+  const pool = spring({ frame: frame - at, fps, config: theme.spring.smooth });
+  const gold = hlColor === colors.yellow;
+  const fill = gold
+    ? "linear-gradient(180deg, #F3DA94 0%, #D9B25A 45%, #A9822F 100%)"
+    : `linear-gradient(180deg, #A9EEFF 0%, ${colors.teal} 60%, #1C8FB0 100%)`;
   return (
-    <div
-      style={{
-        position: "absolute",
-        top: y,
-        left: 140,
-        right: 140,
-        display: "flex",
-        direction: "rtl",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        gap: 24,
-        opacity: 1 - o,
-        transform: `translateY(${-30 * o}px) scale(${1 - 0.05 * o})`,
-      }}
-    >
-      {words.map((w, i) => {
-        const p = spring({ frame: frame - at - i * 4, fps, config: theme.spring.bouncy });
-        const isHl = hl.includes(i);
-        return (
-          <span
-            key={i}
-            style={{
-              display: "inline-block",
-              position: "relative",
-              padding: "0 24px",
-              fontFamily: fonts.display,
-              fontWeight: 900,
-              fontSize: size,
-              lineHeight: 1.35,
-              color: isHl ? colors.ink : colors.chalk,
-              zIndex: 0,
-              textShadow: "none",
-              opacity: Math.min(1, p * 1.5),
-              transform: `translateY(${interpolate(p, [0, 1], [60, 0])}px) scale(${interpolate(p, [0, 1], [0.7, 1])}) rotate(${isHl ? -2 : 0}deg)`,
-              filter: `blur(${interpolate(p, [0, 1], [8, 0], CLAMP)}px)`,
-            }}
-          >
-            {(
+    <div style={{ position: "absolute", top: y, left: 120, right: 120, opacity: 1 - o, transform: `translateY(${-24 * o}px)` }}>
+      <div
+        style={{
+          position: "absolute",
+          left: "8%",
+          right: "8%",
+          top: "18%",
+          bottom: "10%",
+          borderRadius: "50%",
+          background: "radial-gradient(closest-side, rgba(4,10,22,0.78), rgba(4,10,22,0.45) 55%, transparent)",
+          filter: "blur(28px)",
+          transform: `scale(${interpolate(pool, [0, 1], [0.6, 1.25])})`,
+          opacity: pool,
+        }}
+      />
+      <div style={{ position: "relative", display: "flex", direction: "rtl", flexWrap: "wrap", justifyContent: "center", columnGap: size * 0.28 }}>
+        {words.map((w, i) => {
+          const p = spring({ frame: frame - at - i * 5, fps, config: theme.spring.snappy });
+          const line = interpolate(frame, [at + i * 5 + 8, at + i * 5 + 20], [0, 1], { ...CLAMP, easing: theme.ease.out });
+          const isHl = hl.includes(i);
+          return (
+            <span
+              key={i}
+              style={{
+                position: "relative",
+                display: "inline-block",
+                fontFamily: fonts.headline,
+                fontWeight: 900,
+                fontSize: size,
+                lineHeight: 1.5,
+                letterSpacing: 0,
+                opacity: Math.min(1, p * 1.6),
+                transform: `translateY(${interpolate(p, [0, 1], [size * 0.45, 0])}px) scale(${interpolate(p, [0, 1], [0.86, 1])})`,
+                filter: `blur(${interpolate(p, [0, 1], [10, 0], CLAMP)}px) drop-shadow(0 8px 18px rgba(0,0,0,0.55))`,
+              }}
+            >
               <span
-                style={{
-                  position: "absolute",
-                  inset: "14px 0 6px",
-                  zIndex: -1,
-                  background: isHl ? hlColor : "rgba(10, 21, 38, 0.88)",
-                  borderRadius: 6,
-                  boxShadow: "0 10px 20px rgba(0,0,0,0.35)",
-                  transform: `scaleX(${p})`,
-                  transformOrigin: "right",
-                }}
-              />
-            )}
-            {w}
-          </span>
-        );
-      })}
+                style={
+                  isHl
+                    ? { background: fill, WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }
+                    : { color: colors.chalk }
+                }
+              >
+                {w}
+              </span>
+              {isHl ? (
+                <svg
+                  width="100%"
+                  height={size * 0.3}
+                  viewBox="0 0 100 20"
+                  preserveAspectRatio="none"
+                  style={{ position: "absolute", left: "4%", width: "92%", bottom: -size * 0.2, overflow: "visible" }}
+                >
+                  <path
+                    d="M98 8 C70 14 40 4 2 12"
+                    fill="none"
+                    stroke={gold ? colors.yellow : colors.teal}
+                    strokeWidth={5}
+                    strokeLinecap="round"
+                    pathLength={1}
+                    strokeDasharray="1 1"
+                    strokeDashoffset={1 - line}
+                  />
+                </svg>
+              ) : null}
+            </span>
+          );
+        })}
+      </div>
     </div>
   );
 };
