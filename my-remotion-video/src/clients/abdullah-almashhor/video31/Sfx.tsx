@@ -9,6 +9,8 @@ type Cue = {
 
 // Voice sits at about -16.6 LUFS. Base gains keep every effect roughly 18–20 dB under it,
 // so they read as texture, never over the words. Cues land ~2 frames before the visual hit.
+// Overall SFX trim requested by the client: −8%.
+const SFX_TRIM = 0.92;
 const GAIN: Record<Cue["src"], number> = {
   whoosh: 0.16,
   paper: 0.24,
@@ -69,6 +71,7 @@ export const Sfx: React.FC = () => {
               // short fade at the tail so nothing clicks when cut by the end of the reel
               volume={(f) =>
                 GAIN[c.src] *
+                SFX_TRIM *
                 (c.vol ?? 1) *
                 interpolate(f, [len - 6, len], [1, 0], {
                   extrapolateLeft: "clamp",
