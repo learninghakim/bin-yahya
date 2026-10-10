@@ -14,3 +14,7 @@ Each client has `clients/<slug>/` (brief, brand, references, deliveries) and
 `my-remotion-video/src/clients/<slug>/` (theme + videos). Shared motion pieces live in
 `my-remotion-video/src/shared/`. New client: copy `clients/_template`. After rendering to `out/`,
 copy the final video into `clients/<slug>/deliveries/`.
+
+## Rendering
+Never render the final video on your own. Prepare the changes and let the user preview them in
+Remotion Studio (`npm run dev` in `my-remotion-video/`). Render only when the user explicitly says to.

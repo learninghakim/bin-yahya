@@ -129,7 +129,7 @@ export const Scene2Hook: React.FC = () => {
             }}
           >
             تعلم كيف تذاكر <span style={{ color: colors.grey }}>أقل</span> وتحفظ{" "}
-            <span style={{ color: colors.tealDeep }}>أكثر</span>
+            <span style={{ color: colors.bgLift }}>أكثر</span>
           </span>
         </Paper>
         <Tape

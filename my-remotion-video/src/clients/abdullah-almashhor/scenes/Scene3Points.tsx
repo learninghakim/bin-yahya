@@ -19,9 +19,9 @@ type Point = {
 const POINTS: Point[] = [
   {
     text: "التكرار المتباعد",
-    color: colors.teal,
+    color: colors.bgLift,
     ink: colors.chalk,
-    tile: colors.tealDeep,
+    tile: colors.bg,
     icon: (size, c) => <RepeatIcon size={size} color={c} />,
     rotate: -1.6,
   },
@@ -139,7 +139,7 @@ export const Scene3Points: React.FC = () => {
             </Paper>
             <Tape
               seed={`point-tape-${i}`}
-              color={i === 0 ? colors.yellow : colors.teal}
+              color={i === 0 ? colors.yellow : colors.paper}
               width={130}
               height={46}
               style={{
