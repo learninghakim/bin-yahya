@@ -17,5 +17,8 @@ export const fontsReady = Promise.all([
   face("NotoKufiLatin", "noto-kufi-arabic-latin-800-normal.woff2", "800 900"),
   face("PlexArabic", "ibm-plex-sans-arabic-arabic-500-normal.woff2", "500"),
   face("PlexArabic", "ibm-plex-sans-arabic-arabic-600-normal.woff2", "600"),
+  // Dubai (client brand font for Abdullah Almashhor): Medium for captions, Bold for headlines.
+  face("Dubai", "Dubai-Medium.woff2", "500"),
+  face("Dubai", "Dubai-Bold.woff2", "700"),
   face("PlexArabicLatin", "ibm-plex-sans-arabic-latin-600-normal.woff2", "500 600"),
 ]);
