@@ -159,7 +159,7 @@ export const Keyword: React.FC<{
 };
 
 /** Simple geometric glyphs for "different kinds of practice". */
-export const Glyph: React.FC<{ kind: "tri" | "circle" | "grid" | "pen" | "wave"; size: number; color?: string }> = ({
+export const Glyph: React.FC<{ kind: "tri" | "circle" | "grid" | "pen" | "wave" | "book" | "compass"; size: number; color?: string }> = ({
   kind,
   size,
   color = colors.ink,
@@ -175,6 +175,15 @@ export const Glyph: React.FC<{ kind: "tri" | "circle" | "grid" | "pen" | "wave";
       )}
       {kind === "grid" && <path d="M18 18 H82 V82 H18 Z M18 50 H82 M50 18 V82" />}
       {kind === "pen" && <path d="M22 80 L30 60 L70 20 L80 30 L40 70 Z M30 60 L40 70" />}
+      {kind === "book" && (
+        <path d="M50 26 C38 18 22 18 12 22 V80 C22 76 38 76 50 84 C62 76 78 76 88 80 V22 C78 18 62 18 50 26 Z M50 26 V84" />
+      )}
+      {kind === "compass" && (
+        <>
+          <circle cx={50} cy={18} r={7} />
+          <path d="M46 24 L24 86 M54 24 L76 86 M33 60 C42 66 58 66 67 60" />
+        </>
+      )}
       {kind === "wave" && <path d="M10 60 C25 30 40 30 50 50 C60 70 75 70 90 40" />}
     </g>
   </svg>

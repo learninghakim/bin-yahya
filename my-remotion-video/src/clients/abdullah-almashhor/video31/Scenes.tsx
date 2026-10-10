@@ -19,55 +19,122 @@ const Backdrop: React.FC<{ fadeOut?: number }> = ({ fadeOut }) => {
   );
 };
 
-/* s1 — A: identical cards repeat on both sides (same pattern, again and again). */
+/* s1 — A: hours of the same drill — a tally sheet that keeps filling, a clock that keeps spinning. */
 const S1: React.FC = () => {
   const at = useAt(0);
-  const cards = [0, 1, 2].flatMap((i) => [
-    { x: 175, y: 470 + i * 150, side: "l", i },
-    { x: 905, y: 470 + i * 150, side: "r", i },
-  ]);
+  const frame = useCurrentFrame();
+  const sheetIn = useSpr(at(0.2), theme.spring.snappy);
+  const clockIn = useSpr(at(0.35), theme.spring.snappy);
+  const o = useOut(at(5.5));
+  const marks = 20;
+  const spin = interpolate(frame, [at(0.4), at(5.5)], [0, 2160], { ...CLAMP, easing: theme.ease.inOut });
   return (
-    <AbsoluteFill>
-      {cards.map((c, k) => (
-        <Card key={k} x={c.x} y={c.y} w={190} h={150} seed={`s1-${k}`} at={at(0.2) + k * 4} out={at(5.5)} rot={c.side === "l" ? -4 : 4}>
-          <Glyph kind="tri" size={92} />
-        </Card>
-      ))}
-      <ChalkLine x={110} y={420} width={130} height={130} d={X_MARK} delay={at(0.75)} duration={8} strokeWidth={12} />
-      <ChalkLine x={840} y={720} width={130} height={130} d={X_MARK} delay={at(1.0)} duration={8} strokeWidth={12} />
+    <AbsoluteFill style={{ opacity: 1 - o }}>
+      {/* tally sheet (left) */}
+      <div
+        style={{
+          position: "absolute",
+          left: 60,
+          top: 440,
+          opacity: Math.min(1, sheetIn * 1.5),
+          transform: `translateY(${interpolate(sheetIn, [0, 1], [80, 0])}px) rotate(${interpolate(sheetIn, [0, 1], [-16, -5])}deg)`,
+        }}
+      >
+        <Paper width={250} height={330} color={colors.chalk} seed="tally">
+          <svg width={210} height={290} viewBox="0 0 210 290">
+            {[0, 1, 2, 3, 4, 5].map((r) => (
+              <line key={r} x1={10} x2={200} y1={40 + r * 46} y2={40 + r * 46} stroke={colors.teal} strokeOpacity={0.35} strokeWidth={2} />
+            ))}
+            {Array.from({ length: marks }).map((_, i) => {
+              const group = Math.floor(i / 5);
+              const k = i % 5;
+              const start = at(0.4) + i * 6;
+              const p = interpolate(frame, [start, start + 5], [0, 1], CLAMP);
+              const gx = 190 - (group % 2) * 95;
+              const gy = 30 + Math.floor(group / 2) * 120;
+              const d = k < 4 ? `M${gx - k * 16} ${gy} L${gx - k * 16 - 4} ${gy + 70}` : `M${gx + 8} ${gy + 52} L${gx - 64} ${gy + 14}`;
+              return <path key={i} d={d} stroke={colors.ink} strokeWidth={7} strokeLinecap="round" pathLength={1} strokeDasharray="1 1" strokeDashoffset={1 - p} fill="none" opacity={p > 0 ? 1 : 0} />;
+            })}
+          </svg>
+        </Paper>
+      </div>
+      {/* clock (right) */}
+      <div
+        style={{
+          position: "absolute",
+          left: 790,
+          top: 470,
+          width: 230,
+          height: 230,
+          borderRadius: "50%",
+          background: colors.bgLift,
+          border: `12px solid ${colors.paper}`,
+          boxSizing: "border-box",
+          boxShadow: "0 20px 30px rgba(0,0,0,0.45)",
+          opacity: Math.min(1, clockIn * 1.5),
+          transform: `scale(${interpolate(clockIn, [0, 1], [0.5, 1])}) rotate(${interpolate(clockIn, [0, 1], [30, 4])}deg)`,
+        }}
+      >
+        <svg width={206} height={206} viewBox="0 0 206 206">
+          {Array.from({ length: 12 }).map((_, i) => {
+            const a = (i / 12) * Math.PI * 2;
+            return <line key={i} x1={103 + Math.cos(a) * 78} y1={103 + Math.sin(a) * 78} x2={103 + Math.cos(a) * 90} y2={103 + Math.sin(a) * 90} stroke={colors.chalk} strokeWidth={i % 3 ? 3 : 6} />;
+          })}
+          <line x1={103} y1={103} x2={103 + Math.cos(((spin - 90) * Math.PI) / 180) * 72} y2={103 + Math.sin(((spin - 90) * Math.PI) / 180) * 72} stroke={colors.yellow} strokeWidth={6} strokeLinecap="round" />
+          <line x1={103} y1={103} x2={103 + Math.cos(((spin / 12 - 90) * Math.PI) / 180) * 48} y2={103 + Math.sin(((spin / 12 - 90) * Math.PI) / 180) * 48} stroke={colors.chalk} strokeWidth={8} strokeLinecap="round" />
+          <circle cx={103} cy={103} r={8} fill={colors.yellow} />
+        </svg>
+      </div>
+      <ChalkLine x={150} y={380} width={130} height={130} d={X_MARK} delay={at(0.8)} duration={8} strokeWidth={12} />
     </AbsoluteFill>
   );
 };
 
-/* s2 — C: the same card looping in a circle, an eye that "fools" you. */
+/* s2 — C: copies of the SAME card fan out like a deck inside a loop; an eye says "it fools you". */
 const S2: React.FC = () => {
   const at = useAt(5.5);
   const frame = useCurrentFrame();
-  const spin = frame * 0.5;
+  const spin = frame * 0.9;
+  const fan = useSpr(at(5.7), theme.spring.smooth);
   const eyeIn = useSpr(at(7.3), theme.spring.bouncy);
   const blink = Math.abs(Math.sin((frame - at(7.6)) / 7)) > 0.97 ? 0.15 : 1;
+  const o = useOut(at(8.22));
   return (
     <AbsoluteFill>
       <Backdrop fadeOut={at(8.22)} />
-      <div style={{ position: "absolute", inset: 0, transform: `rotate(${spin}deg)`, transformOrigin: "540px 900px" }}>
-        {Array.from({ length: 6 }).map((_, i) => {
-          const a = (i / 6) * Math.PI * 2 - Math.PI / 2;
-          return (
-            <Card key={i} x={540 + Math.cos(a) * 300} y={900 + Math.sin(a) * 300} w={170} h={140} seed="same" at={i * 4} out={at(8.22)} rot={-spin}>
-              <Glyph kind="tri" size={84} />
-            </Card>
-          );
-        })}
-      </div>
-      <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, transform: `rotate(${spin * 1.4}deg)`, transformOrigin: "540px 900px" }}>
-        <circle cx={540} cy={900} r={300} fill="none" stroke={colors.yellow} strokeWidth={4} strokeDasharray="18 16" opacity={0.7} filter="url(#chalk)" />
+      <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, opacity: 1 - o }}>
+        <g transform={`rotate(${spin} 540 900)`}>
+          <circle cx={540} cy={900} r={360} fill="none" stroke={colors.yellow} strokeWidth={4} strokeDasharray="22 18" opacity={0.75} filter="url(#chalk)" />
+          <path d="M540 540 l-26 -18 M540 540 l-26 18" stroke={colors.yellow} strokeWidth={5} strokeLinecap="round" filter="url(#chalk)" />
+          <path d="M540 1260 l26 -18 M540 1260 l26 18" stroke={colors.yellow} strokeWidth={5} strokeLinecap="round" filter="url(#chalk)" />
+        </g>
       </svg>
+      {[4, 3, 2, 1, 0].map((i) => (
+        <div
+          key={i}
+          style={{
+            position: "absolute",
+            left: 540 - 150,
+            top: 900 - 185,
+            opacity: Math.min(1, fan * 2) * (1 - o),
+            transform: `translate(${(i - 2) * 46 * fan}px, ${Math.abs(i - 2) * 14 * fan}px) rotate(${(i - 2) * 9 * fan}deg)`,
+            transformOrigin: "50% 120%",
+          }}
+        >
+          <Paper width={300} height={370} color={colors.chalk} seed="same-card">
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+              <span style={{ fontFamily: fonts.headline, fontWeight: 900, fontSize: 46, color: colors.ink }}>تمرين ١</span>
+              <Glyph kind="pen" size={120} />
+            </div>
+          </Paper>
+        </div>
+      ))}
       <div
         style={{
           position: "absolute",
           left: 540 - 130,
-          top: 900 - 80,
-          opacity: Math.min(1, eyeIn * 1.5),
+          top: 1170,
+          opacity: Math.min(1, eyeIn * 1.5) * (1 - o),
           transform: `scale(${interpolate(eyeIn, [0, 1], [0.3, 1])}) rotate(${interpolate(eyeIn, [0, 1], [20, -4])}deg)`,
         }}
       >
@@ -214,8 +281,8 @@ const S5: React.FC = () => {
   const merge = interpolate(frame, [at(18.8), at(19.3)], [0, 1], { ...CLAMP, easing: theme.ease.inOut });
   const cards = [
     { kind: "pen" as const, color: colors.paper, from: [170, 560], to: [400, 1290], t: 16.9, rot: -8 },
-    { kind: "circle" as const, color: colors.yellow, from: [910, 560], to: [540, 1310], t: 17.3, rot: 6 },
-    { kind: "grid" as const, color: colors.teal, from: [180, 860], to: [680, 1290], t: 17.7, rot: -3 },
+    { kind: "book" as const, color: colors.yellow, from: [910, 560], to: [540, 1310], t: 17.3, rot: 6 },
+    { kind: "compass" as const, color: colors.teal, from: [180, 860], to: [680, 1290], t: 17.7, rot: -3 },
   ];
   return (
     <AbsoluteFill>
@@ -246,14 +313,14 @@ const S6: React.FC = () => {
     <AbsoluteFill>
       <Backdrop fadeOut={at(22.55)} />
       <Card x={870} y={520} w={240} h={200} seed="one" at={at(20.6)} out={at(22.55)} rot={4}>
-        <Glyph kind="tri" size={110} />
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}><Glyph kind="pen" size={90} /><span style={{ fontFamily: fonts.headline, fontWeight: 900, fontSize: 36, color: colors.ink }}>تمرين ١</span></div>
       </Card>
       <ChalkLine x={780} y={450} width={150} height={150} d={X_MARK} delay={at(21.4)} duration={8} strokeWidth={14} />
       <Card x={880} y={800} w={190} h={160} seed="two" at={at(22.0)} out={at(22.55)} color={colors.yellow} rot={-5}>
-        <Glyph kind="circle" size={88} />
+        <Glyph kind="book" size={88} />
       </Card>
       <Card x={860} y={1030} w={190} h={160} seed="three" at={at(22.1)} out={at(22.55)} color={colors.teal} rot={6}>
-        <Glyph kind="grid" size={88} />
+        <Glyph kind="compass" size={88} />
       </Card>
     </AbsoluteFill>
   );
@@ -279,8 +346,8 @@ const S7: React.FC = () => {
   const slotAngle = (slot: number) => -90 + slot * 120;
   const types = [
     { kind: "pen" as const, color: colors.paper, label: "كتابة" },
-    { kind: "circle" as const, color: colors.yellow, label: "حل" },
-    { kind: "grid" as const, color: colors.teal, label: "رسم" },
+    { kind: "book" as const, color: colors.yellow, label: "قراءة" },
+    { kind: "compass" as const, color: colors.teal, label: "رسم" },
   ];
   const posOf = (i: number) => {
     let a = slotAngle(ORDERS[0][i]);
