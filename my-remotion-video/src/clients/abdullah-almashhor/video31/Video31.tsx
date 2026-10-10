@@ -5,6 +5,7 @@ import { colors } from "./kit";
 import { Footage } from "./Footage";
 import { SceneGraphics } from "./Scenes";
 import { Captions, Keywords } from "./Words";
+import { Sfx } from "./Sfx";
 
 /** Reel 31 — interleaved practice. Original audio only; footage never colour-graded. */
 export const Video31: React.FC = () => (
@@ -16,5 +17,6 @@ export const Video31: React.FC = () => (
     <Keywords />
     <Captions />
     <Grain />
+    <Sfx />
   </AbsoluteFill>
 );
