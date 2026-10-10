@@ -1,5 +1,5 @@
 import { useCurrentFrame } from "remotion";
-import { theme } from "../theme";
+import { baseTheme as theme } from "../theme";
 import { useProgress, useSpringAt } from "./motion";
 
 /** Global SVG defs: a dusty, slightly wobbly chalk stroke filter. Mount once. */

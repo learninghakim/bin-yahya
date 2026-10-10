@@ -1,5 +1,5 @@
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { theme } from "../theme";
+import { baseTheme as theme } from "../theme";
 
 export type Word = { text: string; style?: React.CSSProperties; key?: string };
 

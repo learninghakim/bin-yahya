@@ -1,5 +1,5 @@
 import { random } from "remotion";
-import { theme } from "../theme";
+import { baseTheme as theme } from "../theme";
 import { paperBlotch, paperNoise } from "./textures";
 
 /** Deterministic torn-edge clip-path for a w×h rectangle. */

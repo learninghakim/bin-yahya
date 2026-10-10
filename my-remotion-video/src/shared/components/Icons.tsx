@@ -1,4 +1,4 @@
-import { theme } from "../theme";
+import { baseTheme as theme } from "../theme";
 
 const { colors } = theme;
 // Sticker look from the reference: dark ink fill with a thick paper-white outline.

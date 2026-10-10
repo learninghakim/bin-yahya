@@ -1,9 +1,9 @@
 import { Audio } from "@remotion/media";
 import { AbsoluteFill, Sequence, staticFile, useVideoConfig } from "remotion";
 import { theme } from "./theme";
-import { Background } from "./components/Background";
-import { ChalkDefs } from "./components/Chalk";
-import { Grade, Grain, Vignette } from "./components/Overlays";
+import { TornBackdrop } from "./components/TornBackdrop";
+import { GoldInkDefs } from "./components/GoldInkDefs";
+import { Grade, Grain, Vignette } from "../../shared/components/Overlays";
 import { Scene1Intro } from "./scenes/Scene1Intro";
 import { Scene2Hook } from "./scenes/Scene2Hook";
 import { Scene3Points } from "./scenes/Scene3Points";
@@ -52,9 +52,9 @@ export const StudyReel: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ direction: "rtl", backgroundColor: theme.colors.bgDeep }}>
-      <ChalkDefs />
+      <GoldInkDefs />
       {/* 1. background */}
-      <Background />
+      <TornBackdrop />
 
       {/* 2–3. assets + graphics/type, one Sequence per scene */}
       {SCENES.map(({ key, Component }) => {

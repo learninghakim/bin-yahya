@@ -1,11 +1,11 @@
 import { getLength, getPointAtLength } from "@remotion/paths";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { theme } from "../theme";
-import { ChalkLine, DashedArrow, Ring, Sparks } from "../components/Chalk";
-import { Bulb, Pencil } from "../components/Icons";
-import { CLAMP, useBreath, useExit, useProgress, useSeconds, useSpringAt } from "../components/motion";
-import { Paper, Tape } from "../components/Paper";
-import { WordReveal } from "../components/WordReveal";
+import { ChalkLine, DashedArrow, Ring, Sparks } from "../../../shared/components/Chalk";
+import { Bulb, Pencil } from "../../../shared/components/Icons";
+import { CLAMP, useBreath, useExit, useProgress, useSeconds, useSpringAt } from "../../../shared/components/motion";
+import { Paper, Tape } from "../../../shared/components/Paper";
+import { WordReveal } from "../../../shared/components/WordReveal";
 
 const { colors, fonts } = theme;
 
@@ -98,7 +98,7 @@ export const Scene1Intro: React.FC = () => {
           transform: `scale(${interpolate(labelIn, [0, 1], [1.35, 1])}) rotate(${interpolate(labelIn, [0, 1], [-12, -3]) + sway * 0.3}deg)`,
         }}
       >
-        <Paper width={500} height={130} color={colors.teal} seed="tagline">
+        <Paper width={500} height={130} color={colors.bgLift} seed="tagline">
           <span
             style={{
               fontFamily: fonts.label,

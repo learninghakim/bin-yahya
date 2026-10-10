@@ -1,24 +1,24 @@
 // Single source of truth for colors, type, easings and spring presets.
-// Palette is taken from the reference collage (references/r1.png):
-// navy chalkboard, teal + mustard paper cut-outs, off-white paper, chalk white.
+// Palette from clients/abdullah-almashhor/references/style-*.webp:
+// deep navy torn paper, cream paper, gold leaf seams, cyan glow accents.
 import { Easing } from "remotion";
 
-export const theme = {
+export const baseTheme = {
   colors: {
-    bg: "#0B1628",
-    bgDeep: "#050A14",
-    bgLift: "#16294A",
-    teal: "#2A9D84", // hero color — one element per frame
-    tealDeep: "#1E7A66",
-    yellow: "#E9BF3E", // accent
-    paper: "#E7E3DA",
-    paperShade: "#CFCAC0",
-    grey: "#5E636B",
-    greyLight: "#8D9199",
-    ink: "#141B26",
-    chalk: "#F2F0EA",
-    chalkDim: "rgba(242, 240, 234, 0.72)",
-    tealGlow: "rgba(42, 157, 132, 0.55)",
+    bg: "#0A1526", // deep navy
+    bgDeep: "#04080F",
+    bgLift: "#1B2F55", // royal navy panels
+    teal: "#3FB8D4", // cyan glow — hero color, one element per frame
+    tealDeep: "#1F6F8B",
+    yellow: "#C9A24B", // gold leaf accent
+    paper: "#E8DCC4", // cream torn paper
+    paperShade: "#C9BBA0",
+    grey: "#4E5560",
+    greyLight: "#8A9099",
+    ink: "#0E1622",
+    chalk: "#F3EEE3",
+    chalkDim: "rgba(243, 238, 227, 0.72)",
+    tealGlow: "rgba(63, 184, 212, 0.55)",
   },
   fonts: {
     // Arabic and Latin subsets are separate files; the browser falls back per glyph.

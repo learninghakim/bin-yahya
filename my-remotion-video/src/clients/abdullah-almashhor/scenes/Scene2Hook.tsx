@@ -1,10 +1,10 @@
 import { AbsoluteFill, interpolate, interpolateColors, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { theme } from "../theme";
-import { ChalkLine, Ring, Sparks } from "../components/Chalk";
-import { ChartArt } from "../components/Icons";
-import { useBreath, useExit, useProgress, useSeconds, useSpringAt } from "../components/motion";
-import { Paper, Tape } from "../components/Paper";
-import { WordReveal } from "../components/WordReveal";
+import { ChalkLine, Ring, Sparks } from "../../../shared/components/Chalk";
+import { ChartArt } from "../../../shared/components/Icons";
+import { useBreath, useExit, useProgress, useSeconds, useSpringAt } from "../../../shared/components/motion";
+import { Paper, Tape } from "../../../shared/components/Paper";
+import { WordReveal } from "../../../shared/components/WordReveal";
 
 const { colors, fonts } = theme;
 
@@ -129,7 +129,7 @@ export const Scene2Hook: React.FC = () => {
             }}
           >
             تعلم كيف تذاكر <span style={{ color: colors.grey }}>أقل</span> وتحفظ{" "}
-            <span style={{ color: colors.tealDeep }}>أكثر</span>
+            <span style={{ color: colors.bgLift }}>أكثر</span>
           </span>
         </Paper>
         <Tape

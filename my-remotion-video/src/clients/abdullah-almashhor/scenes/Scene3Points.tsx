@@ -1,9 +1,9 @@
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { theme } from "../theme";
-import { ChalkLine, DashedArrow, Ring } from "../components/Chalk";
-import { Gear, QuestionIcon, RepeatIcon, TargetIcon } from "../components/Icons";
-import { useExit, useSeconds } from "../components/motion";
-import { Paper, Tape } from "../components/Paper";
+import { ChalkLine, DashedArrow, Ring } from "../../../shared/components/Chalk";
+import { Gear, QuestionIcon, RepeatIcon, TargetIcon } from "../../../shared/components/Icons";
+import { useExit, useSeconds } from "../../../shared/components/motion";
+import { Paper, Tape } from "../../../shared/components/Paper";
 
 const { colors, fonts } = theme;
 
@@ -19,9 +19,9 @@ type Point = {
 const POINTS: Point[] = [
   {
     text: "التكرار المتباعد",
-    color: colors.teal,
+    color: colors.bgLift,
     ink: colors.chalk,
-    tile: colors.tealDeep,
+    tile: colors.bg,
     icon: (size, c) => <RepeatIcon size={size} color={c} />,
     rotate: -1.6,
   },
@@ -139,7 +139,7 @@ export const Scene3Points: React.FC = () => {
             </Paper>
             <Tape
               seed={`point-tape-${i}`}
-              color={i === 0 ? colors.yellow : colors.teal}
+              color={i === 0 ? colors.yellow : colors.paper}
               width={130}
               height={46}
               style={{

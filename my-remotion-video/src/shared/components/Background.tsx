@@ -1,5 +1,5 @@
 import { AbsoluteFill, useCurrentFrame } from "remotion";
-import { theme } from "../theme";
+import { baseTheme as theme } from "../theme";
 import { chalkDust } from "./textures";
 
 /** Navy chalkboard: gradient base, drifting light pools, chalk dust and smudges. */

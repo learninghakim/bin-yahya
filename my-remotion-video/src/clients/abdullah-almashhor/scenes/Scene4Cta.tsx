@@ -1,10 +1,10 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { theme } from "../theme";
-import { Ring, Sparks } from "../components/Chalk";
-import { Cursor } from "../components/Icons";
-import { CLAMP, useBreath, useProgress, useSeconds, useSpringAt } from "../components/motion";
-import { Paper } from "../components/Paper";
-import { paperNoise } from "../components/textures";
+import { Ring, Sparks } from "../../../shared/components/Chalk";
+import { Cursor } from "../../../shared/components/Icons";
+import { CLAMP, useBreath, useProgress, useSeconds, useSpringAt } from "../../../shared/components/motion";
+import { Paper } from "../../../shared/components/Paper";
+import { paperNoise } from "../../../shared/components/textures";
 
 const { colors, fonts } = theme;
 const BTN = { w: 800, h: 180, y: 820 };
@@ -53,9 +53,9 @@ export const Scene4Cta: React.FC = () => {
           width: BTN.w,
           height: BTN.h,
           borderRadius: BTN.h / 2,
-          background: `linear-gradient(180deg, ${colors.teal}, ${colors.tealDeep})`,
+          background: `linear-gradient(180deg, ${colors.bgLift}, ${colors.bg})`,
           boxShadow: `0 0 ${70 * glow}px ${colors.tealGlow}, 0 24px 40px rgba(0,0,0,0.45), inset 0 -8px 0 rgba(0,0,0,0.15)`,
-          border: `6px solid ${colors.paper}`,
+          border: `6px solid ${colors.teal}`,
           display: "flex",
           direction: "rtl",
           alignItems: "center",
