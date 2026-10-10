@@ -16,5 +16,6 @@ Each client has `clients/<slug>/` (brief, brand, references, deliveries) and
 copy the final video into `clients/<slug>/deliveries/`.
 
 ## Rendering
-Never render the final video on your own. Prepare the changes and let the user preview them in
-Remotion Studio (`npm run dev` in `my-remotion-video/`). Render only when the user explicitly says to.
+Never render the final video on your own. For review, render a few key still frames
+(`npx remotion still`) and send them to the user in chat. Render the full video only when the
+user explicitly says to.
