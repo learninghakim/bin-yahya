@@ -1,7 +1,7 @@
 import { Audio } from "@remotion/media";
 import { interpolate, Sequence, staticFile, useVideoConfig } from "remotion";
 
-type Cue = {
+export type SfxCue = {
   at: number;
   src: "whoosh" | "paper" | "pop" | "click" | "chime";
   vol?: number;
@@ -11,7 +11,7 @@ type Cue = {
 // so they read as texture, never over the words. Cues land ~2 frames before the visual hit.
 // Overall SFX trim requested by the client: −8%.
 const SFX_TRIM = 0.92;
-const GAIN: Record<Cue["src"], number> = {
+const GAIN: Record<SfxCue["src"], number> = {
   whoosh: 0.16,
   paper: 0.24,
   pop: 0.18,
@@ -19,7 +19,7 @@ const GAIN: Record<Cue["src"], number> = {
   chime: 0.3,
 };
 
-const CUES: Cue[] = [
+const CUES: SfxCue[] = [
   { at: 0.12, src: "paper" }, // tally sheet + clock
   { at: 0.75, src: "click" }, // X over the sheet
   { at: 5.45, src: "whoosh" }, // → collage
@@ -51,11 +51,11 @@ const CUES: Cue[] = [
 ];
 
 /** Soft sound design on top of the original voice (no music). */
-export const Sfx: React.FC = () => {
+export const Sfx: React.FC<{ cues?: SfxCue[] }> = ({ cues = CUES }) => {
   const { fps, durationInFrames } = useVideoConfig();
   return (
     <>
-      {CUES.map((c, i) => {
+      {cues.map((c, i) => {
         const from = Math.round(c.at * fps);
         const len = Math.min(Math.round(1.6 * fps), durationInFrames - from);
         return (
