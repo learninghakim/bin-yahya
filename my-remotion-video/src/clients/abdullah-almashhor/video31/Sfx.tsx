@@ -3,7 +3,7 @@ import { interpolate, Sequence, staticFile, useVideoConfig } from "remotion";
 
 export type SfxCue = {
   at: number;
-  src: "whoosh" | "paper" | "pop" | "click" | "chime";
+  src: "whoosh" | "paper" | "pop" | "click" | "chime" | "thump";
   vol?: number;
 };
 
@@ -17,6 +17,7 @@ const GAIN: Record<SfxCue["src"], number> = {
   pop: 0.18,
   click: 0.2,
   chime: 0.3,
+  thump: 0.12,
 };
 
 const CUES: SfxCue[] = [
