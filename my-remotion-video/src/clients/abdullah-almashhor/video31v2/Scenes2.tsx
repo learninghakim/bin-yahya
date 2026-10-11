@@ -80,6 +80,106 @@ const Polaroid: React.FC<{
   );
 };
 
+/**
+ * "نفس النمط لساعات": two paper conveyor belts on the sides carry the SAME exercise tile round
+ * and round (running in place), while a gold counter races up — many reps, no progress.
+ */
+const Treadmill: React.FC<{ at: number; out: number }> = ({ at, out }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const p = spring({ frame: frame - at, fps, config: theme.spring.snappy });
+  const o = useOut(out);
+  const speed = interpolate(frame, [at, at + 40], [2, 9], {
+    ...CLAMP,
+    easing: theme.ease.in,
+  });
+  const travel = (frame - at) * speed;
+  const reps = Math.max(
+    1,
+    Math.round(
+      interpolate(frame, [at + 6, out - 6], [1, 120], {
+        ...CLAMP,
+        easing: theme.ease.in,
+      }),
+    ),
+  );
+  const STEP = 160;
+  const belt = (x: number, dir: 1 | -1, side: "l" | "r") => (
+    <div
+      style={{
+        position: "absolute",
+        left: x,
+        top: 360,
+        width: 196,
+        height: 620,
+        borderRadius: 26,
+        background: `linear-gradient(90deg, ${colors.bgDeep}, ${colors.bgLift} 50%, ${colors.bgDeep})`,
+        border: `6px solid ${colors.yellow}`,
+        boxShadow: "0 24px 40px rgba(0,0,0,0.5)",
+        overflow: "hidden",
+        opacity: Math.min(1, p * 1.5) * (1 - o),
+        transform: `translateX(${interpolate(p, [0, 1], [side === "l" ? -320 : 320, 0])}px) rotate(${side === "l" ? -3 : 3}deg)`,
+        WebkitMaskImage:
+          "linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent)",
+      }}
+    >
+      {Array.from({ length: 6 }).map((_, k) => {
+        const y =
+          ((((k * STEP + dir * travel) % (STEP * 5)) + STEP * 5) % (STEP * 5)) -
+          STEP;
+        return (
+          <div key={k} style={{ position: "absolute", left: 18, top: y }}>
+            <Paper
+              width={148}
+              height={130}
+              color={colors.chalk}
+              seed="same-rep"
+              rim={8}
+            >
+              <Glyph kind="pen" size={70} />
+            </Paper>
+          </div>
+        );
+      })}
+    </div>
+  );
+  return (
+    <>
+      {belt(40, 1, "l")}
+      {belt(844, -1, "r")}
+      {/* rep counter */}
+      <div
+        style={{
+          position: "absolute",
+          left: 816,
+          top: 268,
+          width: 250,
+          textAlign: "center",
+          direction: "ltr",
+          fontFamily: fonts.headline,
+          fontWeight: 700,
+          fontSize: 64,
+          color: colors.ink,
+          opacity: Math.min(1, p * 1.5) * (1 - o),
+          transform: `scale(${interpolate(p, [0, 1], [0.4, 1])}) rotate(4deg)`,
+        }}
+      >
+        <span
+          style={{
+            display: "inline-block",
+            padding: "2px 22px",
+            background: colors.yellow,
+            borderRadius: 12,
+            boxShadow: "0 10px 20px rgba(0,0,0,0.4)",
+          }}
+        >
+          ×{reps}
+        </span>
+      </div>
+    </>
+  );
+};
+
 /* s1 — A: a falling line chart (fail), then identical photocopies of the same moment (same pattern). */
 const S1: React.FC = () => {
   const at = useAt(0);
@@ -90,7 +190,6 @@ const S1: React.FC = () => {
     ...CLAMP,
     easing: theme.ease.inOut,
   });
-  const out = useOut(at(5.5));
   return (
     <AbsoluteFill>
       <div
@@ -133,26 +232,7 @@ const S1: React.FC = () => {
           </svg>
         </Paper>
       </div>
-      {[0, 1, 2].map((i) => {
-        const p = spring({
-          frame: frame - at(3.0) - i * 5,
-          fps: 30,
-          config: theme.spring.snappy,
-        });
-        return (
-          <Polaroid
-            key={i}
-            src={still("s1")}
-            w={150}
-            style={{
-              left: 830,
-              top: 400 + i * 200,
-              opacity: Math.min(1, p * 1.6) * (1 - out),
-              transform: `translateX(${interpolate(p, [0, 1], [300, 0])}px) rotate(5deg)`,
-            }}
-          />
-        );
-      })}
+      <Treadmill at={at(3.0)} out={at(5.5)} />
     </AbsoluteFill>
   );
 };
