@@ -5,6 +5,7 @@ import { StudyReel } from "./clients/abdullah-almashhor/StudyReel";
 import { VIDEO } from "./shared/theme";
 import { Video31 } from "./clients/abdullah-almashhor/video31/Video31";
 import { Video31v2 } from "./clients/abdullah-almashhor/video31v2/Video31v2";
+import { Video31v3 } from "./clients/abdullah-almashhor/video31v3/Video31v3";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -28,6 +29,14 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Abdullah-31-v2"
         component={Video31v2}
+        durationInFrames={1079}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Abdullah-31-v3"
+        component={Video31v3}
         durationInFrames={1079}
         fps={30}
         width={1080}

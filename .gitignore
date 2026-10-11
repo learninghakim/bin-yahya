@@ -1,2 +1,7 @@
 .claude/notify-now
 .claude/.telegram-videos
+
+# Segoe UI is a Microsoft font: kept local until the repo is private (do not publish in a public repo)
+clients/abdullah-almashhor/brand/fonts/segoe-ui/
+my-remotion-video/public/fonts/segoeui*.ttf
+my-remotion-video/public/fonts/seguisb*.ttf

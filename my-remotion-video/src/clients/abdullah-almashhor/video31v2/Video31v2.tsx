@@ -8,7 +8,7 @@ import { Footage2 } from "./Footage2";
 import { SceneGraphics2 } from "./Scenes2";
 
 // Same approved type system as v1; new placements to suit the new layouts.
-const KEYWORDS: Kw[] = [
+export const KEYWORDS: Kw[] = [
   { from: 0.03, to: 2.95, words: ["أسرع", "طريقة", "تفشل"], y: 1040, hl: [2] },
   { from: 3.0, to: 5.45, words: ["نفس", "النمط"], y: 1040, size: 118 },
   { from: 5.6, to: 7.25, words: ["شكل", "واحد"], y: 1250, size: 116 },
@@ -66,7 +66,7 @@ const KEYWORDS: Kw[] = [
   { from: 35.23, to: 36.0, words: ["طويلة", "المدى"], y: 1135, size: 118 },
 ];
 
-const SFX: SfxCue[] = [
+export const SFX: SfxCue[] = [
   { at: 0.12, src: "paper" }, // chart card
   { at: 2.95, src: "paper", vol: 0.8 }, // photocopies slide in
   { at: 5.45, src: "whoosh" },
