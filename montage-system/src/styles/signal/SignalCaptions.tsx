@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import type { Caption } from "@remotion/captions";
 import { S } from "./tokens";
+import { chunkCaptions, chunkFontSize } from "./chunks";
 
 /**
  * Bottom captions — EVERY spoken word, always on screen (also over panels and stages).
@@ -11,31 +12,6 @@ import { S } from "./tokens";
  * said are white, words not yet said are dimmed — the eye tracks the voice.
  * A chunk holds 0.45 s after its last word, or until the next one if it comes within 0.8 s.
  */
-export type Chunk = { words: { text: string; s: number; e: number }[]; s: number; e: number; show: number; hide: number };
-
-export const chunkCaptions = (caps: Caption[], maxWords = 4): Chunk[] => {
-  const words = caps.map((c) => ({ text: c.text.trim(), s: c.startMs / 1000, e: c.endMs / 1000 })).filter((w) => w.text);
-  const chunks: Chunk[] = [];
-  let cur: Chunk["words"] = [];
-  const flush = () => {
-    if (cur.length) chunks.push({ words: cur, s: cur[0].s, e: cur[cur.length - 1].e, show: 0, hide: 0 });
-    cur = [];
-  };
-  words.forEach((w, i) => {
-    const prev = words[i - 1];
-    if (cur.length && (cur.length >= maxWords || w.s - prev.e > 0.45 || w.e - cur[0].s > 2.0)) flush();
-    cur.push(w);
-    if (/[.,!?؟،:]$/.test(w.text)) flush();
-  });
-  flush();
-  chunks.forEach((c, i) => {
-    const next = chunks[i + 1];
-    c.show = c.s - 0.05;
-    c.hide = next && next.s - c.e < 0.8 ? next.s - 0.05 : c.e + S.dur.hold;
-  });
-  return chunks;
-};
-
 export const SignalCaptions: React.FC<{ captions: Caption[]; y?: number }> = ({ captions, y = S.layout.captionY }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -45,8 +21,7 @@ export const SignalCaptions: React.FC<{ captions: Caption[]; y?: number }> = ({ 
   if (!c) return null;
 
   const a = interpolate(t, [c.show, c.show + 0.12, c.hide - 0.12, c.hide], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const chars = c.words.reduce((n, w) => n + w.text.length + 1, 0);
-  const size = Math.min(56, Math.round((S.layout.captionMaxW - 60) / (chars * 0.52)));
+  const size = chunkFontSize(c, S.layout.captionMaxW);
 
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>

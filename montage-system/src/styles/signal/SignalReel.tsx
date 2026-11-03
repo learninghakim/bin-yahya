@@ -14,10 +14,12 @@ import type { Segment } from "../../system/types";
 import { VIDEO } from "../../system/safeArea";
 import { SceneClock } from "./clock";
 import { Panel } from "./Panel";
-import { Burst, HookCam, Slam, Stage } from "./moments";
+import { Burst, DisplayWords, HookCam, Slam, Stage, StageBackdrop, Viewfinder } from "./moments";
+import { Barbell, Bolt, Book, BrainNet, Float, FollowArt, ForgetCurve, Gauge, Habits, IllusionBar, Journey, Toggle } from "./art";
+import { AbsoluteFill as AF } from "remotion";
 import { SignalCaptions } from "./SignalCaptions";
 import { autoSfx, SIGNAL_SFX } from "./sfx";
-import type { Beat, SignalSpec, Widget } from "./types";
+import type { Art, Beat, SignalSpec, Widget } from "./types";
 import { Checklist } from "./widgets/Checklist";
 import { Stepper } from "./widgets/Stepper";
 import { Bars } from "./widgets/Bars";
@@ -43,12 +45,50 @@ const WidgetView: React.FC<{ w: Widget }> = ({ w }) => {
   }
 };
 
+const ArtView: React.FC<{ a: Art }> = ({ a }) => {
+  switch (a.type) {
+    case "gauge": return <Gauge at={a.at} settleAt={a.settleAt} left={a.left} right={a.right} />;
+    case "bolt": return <Bolt at={a.at} />;
+    case "illusion": return <IllusionBar fillAt={a.fillAt} trickAt={a.trickAt} full={a.full} trick={a.trick} />;
+    case "book": return <Book title={a.title} openAt={a.openAt} peopleAt={a.peopleAt} chips={a.chips} />;
+    case "curve": return <ForgetCurve feelAt={a.feelAt} realAt={a.realAt} longAt={a.longAt} feel={a.feel} real={a.real} xLabel={a.xLabel} yLabel={a.yLabel} />;
+    case "habits": return <Habits pageAt={a.pageAt} highlightAt={a.highlightAt} rereadAt={a.rereadAt} illusionAt={a.illusionAt} crackAt={a.crackAt} bubble={a.bubble} />;
+    case "toggle": return <Toggle flipAt={a.flipAt} off={a.off} on={a.on} />;
+    case "journey": return <Journey stops={a.stops} />;
+    case "barbell": return <Barbell liftAt={a.liftAt} squeezeAt={a.squeezeAt} />;
+    case "brain": return <BrainNet weakAt={a.weakAt} crossAt={a.crossAt} buildAt={a.buildAt} strongAt={a.strongAt} weak={a.weak} />;
+    case "follow": return <FollowArt tapAt={a.tapAt} bellAt={a.bellAt} button={a.button} done={a.done} />;
+  }
+};
+
 const BeatView: React.FC<{ b: Beat }> = ({ b }) => {
   switch (b.kind) {
     case "hookCam": return <HookCam words={b.words} highlight={b.highlight} />;
     case "burst": return <Burst icon={b.icon} at={b.at} words={b.words} highlight={b.highlight} />;
     case "stage": return <Stage icon={b.icon} label={b.label} title={b.title} highlight={b.highlight} chips={b.chips} />;
     case "slam": return <Slam words={b.words} label={b.label} highlight={b.highlight} />;
+    case "art":
+      if (b.stage) {
+        return (
+          <AF>
+            <StageBackdrop />
+            <Float y={b.y ?? 860} h={1100} halo={0}>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
+                {b.title ? <DisplayWords words={b.title} highlight={b.highlight} size={96} stroke={false} /> : null}
+                <ArtView a={b.art} />
+              </div>
+            </Float>
+          </AF>
+        );
+      }
+      return (
+        <AF>
+          {b.viewfinder ? <Viewfinder /> : null}
+          <Float y={b.y} halo={b.art.type === "brain" || b.art.type === "habits" ? 0.75 : 0.62}>
+            <ArtView a={b.art} />
+          </Float>
+        </AF>
+      );
     case "panel":
       return (
         <Panel label={b.label} top={b.top}>

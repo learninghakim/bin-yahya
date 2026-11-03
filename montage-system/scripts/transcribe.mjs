@@ -7,6 +7,7 @@ import path from "node:path";
 import { installWhisperCpp, toCaptions, transcribe } from "@remotion/install-whisper-cpp";
 import { spawnSync } from "node:child_process";
 import { resolveRaw, ROOT, run, slugOf } from "./lib.mjs";
+import { snapCaptions } from "./snap-captions.mjs";
 
 const file = resolveRaw(process.argv[2]);
 const language = process.argv[3] ?? "ar";
@@ -45,7 +46,9 @@ const output = await transcribe({
 const { captions } = toCaptions({ whisperCppOutput: output });
 
 mkdirSync(path.join(ROOT, "public", "captions"), { recursive: true });
-writeFileSync(path.join(ROOT, "public", "captions", `${slug}.json`), JSON.stringify(captions, null, 1));
+const capFile = path.join(ROOT, "public", "captions", `${slug}.json`);
+writeFileSync(capFile, JSON.stringify(captions, null, 1));
+console.log(`snapped ${snapCaptions(file, capFile)} word starts to the audio`);
 
 // Human-readable transcript with timestamps — used to time the scenes.
 const lines = [];

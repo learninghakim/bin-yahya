@@ -34,6 +34,11 @@ Remotion system that turns a raw talking-head clip into an Instagram Reel (1080�
   Read `src/styles/signal/README.md` before editing with it. New video: `npm run new <slug> -- --signal`.
   Gallery of every beat/widget: `src/videos/signal/_demo.ts` (composition `Signal-Gallery`).
   Times in SignalSpec are ABSOLUTE seconds; `to` = last word + 0.45. Panels y≈880–1380, captions y≈1440.
+  **Prefer `kind: "art"` (illustrative motion: gauge, bolt, illusion, book, curve, habits, toggle, journey, barbell,
+  brain, follow — gallery `Signal-Art`) over text panels; no big text blocks — the captions carry the words.**
+  Invent a new art in `styles/signal/art.tsx` when no existing one fits the sentence.
+  Always run `npm run check [id]` (static timing/SFX/caption checks) + stills of every beat's midpoint before handing off.
+  Captions: `npm run transcribe` auto-snaps word starts to the audio (`npm run snap <slug>` to redo).
 - Reference reels for style analysis go in `references/` (gitignored, never committed).
 
 ## Map

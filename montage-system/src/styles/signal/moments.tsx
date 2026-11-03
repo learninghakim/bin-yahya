@@ -10,7 +10,7 @@ import { Chip, Chips } from "./widgets/Chips";
 export type TimedWord = { text: string; at: number };
 
 /** Display words that land one by one at their spoken time; highlighted ones in lime. */
-const DisplayWords: React.FC<{ words: TimedWord[]; highlight?: string[]; size: number; stroke?: boolean; maxWidth?: number }> = ({ words, highlight = [], size, stroke = true, maxWidth = 900 }) => {
+export const DisplayWords: React.FC<{ words: TimedWord[]; highlight?: string[]; size: number; stroke?: boolean; maxWidth?: number }> = ({ words, highlight = [], size, stroke = true, maxWidth = 900 }) => {
   const { t } = useNow();
   const latin = words.every((w) => !/[\u0600-\u06FF]/.test(w.text));
   return (
@@ -33,6 +33,45 @@ const DisplayWords: React.FC<{ words: TimedWord[]; highlight?: string[]; size: n
         );
       })}
     </div>
+  );
+};
+
+/** Camera viewfinder chrome (corner brackets + REC pill with running timecode). */
+export const Viewfinder: React.FC = () => {
+  const { t, from } = useNow();
+  const { inn, out } = useSceneVis();
+  const inset = 70 - 30 * (1 - inn);
+  const corner = (pos: React.CSSProperties, rot: number) => (
+    <div style={{ position: "absolute", width: 90, height: 90, borderTop: `5px solid ${S.color.text}`, borderRight: `5px solid ${S.color.text}`, borderTopRightRadius: 18, transform: `rotate(${rot}deg)`, opacity: 0.9, ...pos }} />
+  );
+  return (
+    <AbsoluteFill style={{ opacity: 1 - out }}>
+      {corner({ top: 170, right: inset }, 0)}
+      {corner({ top: 170, left: inset }, -90)}
+      {corner({ bottom: 400, right: inset }, 90)}
+      {corner({ bottom: 400, left: inset }, 180)}
+      <div style={{ position: "absolute", top: 180, left: 0, right: 0, display: "flex", justifyContent: "center", ...enter(inn, 0, -10) }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, padding: "10px 26px", borderRadius: 999, background: S.color.panel, border: `1.5px solid ${S.color.line}`, fontFamily: S.font.ui, fontWeight: 700, fontSize: 28, color: S.color.text, direction: "ltr" }}>
+          <span style={{ width: 14, height: 14, borderRadius: 14, background: S.color.danger, opacity: Math.floor(t * 2) % 2 ? 0.35 : 1 }} />
+          REC
+          <span style={{ fontVariantNumeric: "tabular-nums", color: S.color.dim, fontWeight: 500 }}>00:{Math.max(0, t - from).toFixed(0).padStart(2, "0")}</span>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/** Full-screen graphite backdrop with a soft lime glow and a dot grid (fades in/out with the scene). */
+export const StageBackdrop: React.FC = () => {
+  const { t, from } = useNow();
+  const { out } = useSceneVis();
+  const a = interpolate(t, [from, from + 0.22], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) * (1 - out);
+  return (
+    <AbsoluteFill style={{ opacity: a }}>
+      <AbsoluteFill style={{ background: S.color.bg }} />
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse 70% 40% at 50% 46%, ${S.color.limeSoft}, transparent 70%)` }} />
+      <AbsoluteFill style={{ backgroundImage: `radial-gradient(${S.color.faint} 1.5px, transparent 1.5px)`, backgroundSize: "48px 48px", opacity: 0.35, maskImage: "radial-gradient(ellipse at 50% 45%, black 20%, transparent 70%)" }} />
+    </AbsoluteFill>
   );
 };
 

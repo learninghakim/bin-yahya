@@ -9,7 +9,9 @@
     "fetch-raw": "node scripts/fetch-raw.mjs",
     "probe": "node scripts/probe.mjs",
     "transcribe": "node scripts/transcribe.mjs",
+    "snap": "node scripts/snap-captions.mjs",
     "new": "node scripts/new-video.mjs",
+    "check": "node scripts/check.mjs",
     "still": "node scripts/stills.mjs",
     "render": "node scripts/render.mjs",
     "lint": "eslint src && tsc"

@@ -43,9 +43,9 @@
  },
  {
   "text": " تعال",
-  "startMs": 2420,
+  "startMs": 2700,
   "endMs": 2780,
-  "timestampMs": 2840,
+  "timestampMs": 2700,
   "confidence": 0.566411
  },
  {
@@ -64,7 +64,7 @@
  },
  {
   "text": " هذا",
-  "startMs": 3840,
+  "startMs": 3990,
   "endMs": 4110,
   "timestampMs": 4140,
   "confidence": 0.998298
@@ -120,14 +120,14 @@
  },
  {
   "text": " هي",
-  "startMs": 6920,
+  "startMs": 7010,
   "endMs": 7090,
-  "timestampMs": 7320,
+  "timestampMs": 7010,
   "confidence": 0.86025
  },
  {
   "text": " أكبر",
-  "startMs": 7090,
+  "startMs": 7250,
   "endMs": 7420,
   "timestampMs": 7480,
   "confidence": 0.994001
@@ -176,7 +176,7 @@
  },
  {
   "text": " Make",
-  "startMs": 10300,
+  "startMs": 10390,
   "endMs": 10510,
   "timestampMs": 10560,
   "confidence": 0.728746
@@ -190,7 +190,7 @@
  },
  {
   "text": " Stick",
-  "startMs": 10750,
+  "startMs": 10860,
   "endMs": 11240,
   "timestampMs": 11140,
   "confidence": 0.955313
@@ -218,7 +218,7 @@
  },
  {
   "text": " كبار",
-  "startMs": 12550,
+  "startMs": 12710,
   "endMs": 12850,
   "timestampMs": 12880,
   "confidence": 0.999826
@@ -274,14 +274,14 @@
  },
  {
   "text": " هي",
-  "startMs": 16620,
+  "startMs": 16720,
   "endMs": 16800,
-  "timestampMs": 16980,
+  "timestampMs": 16720,
   "confidence": 0.986814
  },
  {
   "text": " إنه",
-  "startMs": 16800,
+  "startMs": 16900,
   "endMs": 17070,
   "timestampMs": 17220,
   "confidence": 0.958974
@@ -351,9 +351,9 @@
  },
  {
   "text": " هي",
-  "startMs": 20800,
+  "startMs": 20860,
   "endMs": 20940,
-  "timestampMs": 21080,
+  "timestampMs": 20860,
   "confidence": 0.997689
  },
  {
@@ -421,9 +421,9 @@
  },
  {
   "text": " أنا",
-  "startMs": 24320,
+  "startMs": 24470,
   "endMs": 24550,
-  "timestampMs": 24600,
+  "timestampMs": 24470,
   "confidence": 0.999102
  },
  {
@@ -449,16 +449,16 @@
  },
  {
   "text": " الكتاب",
-  "startMs": 25620,
+  "startMs": 25700,
   "endMs": 26080,
   "timestampMs": 25720,
   "confidence": 0.999954
  },
  {
   "text": " كنت",
-  "startMs": 26080,
+  "startMs": 26270,
   "endMs": 26350,
-  "timestampMs": 26300,
+  "timestampMs": 26270,
   "confidence": 0.993271
  },
  {
@@ -470,9 +470,9 @@
  },
  {
   "text": " أفتح",
-  "startMs": 26800,
+  "startMs": 26850,
   "endMs": 27160,
-  "timestampMs": 26780,
+  "timestampMs": 26850,
   "confidence": 0.913103
  },
  {
@@ -498,7 +498,7 @@
  },
  {
   "text": " وأعيد",
-  "startMs": 28870,
+  "startMs": 29070,
   "endMs": 29520,
   "timestampMs": 29160,
   "confidence": 0.995186
@@ -512,9 +512,9 @@
  },
  {
   "text": " ثم",
-  "startMs": 30060,
+  "startMs": 30220,
   "endMs": 30300,
-  "timestampMs": 30380,
+  "timestampMs": 30220,
   "confidence": 0.999968
  },
  {
@@ -561,7 +561,7 @@
  },
  {
   "text": " لكن",
-  "startMs": 32540,
+  "startMs": 32680,
   "endMs": 32780,
   "timestampMs": 32820,
   "confidence": 0.999952
@@ -617,9 +617,9 @@
  },
  {
   "text": " في",
-  "startMs": 35260,
+  "startMs": 35340,
   "endMs": 35420,
-  "timestampMs": 35380,
+  "timestampMs": 35340,
   "confidence": 0.999815
  },
  {
@@ -645,14 +645,14 @@
  },
  {
   "text": " ثم",
-  "startMs": 36800,
+  "startMs": 36880,
   "endMs": 36960,
-  "timestampMs": 37060,
+  "timestampMs": 36880,
   "confidence": 0.999636
  },
  {
   "text": " أقوم",
-  "startMs": 36960,
+  "startMs": 37030,
   "endMs": 37280,
   "timestampMs": 37280,
   "confidence": 0.999272
@@ -673,7 +673,7 @@
  },
  {
   "text": " وأحاول",
-  "startMs": 38400,
+  "startMs": 38720,
   "endMs": 38930,
   "timestampMs": 38800,
   "confidence": 0.737938
@@ -701,9 +701,9 @@
  },
  {
   "text": " من",
-  "startMs": 40500,
+  "startMs": 40570,
   "endMs": 40650,
-  "timestampMs": 40760,
+  "timestampMs": 40570,
   "confidence": 0.99996
  },
  {
@@ -715,16 +715,16 @@
  },
  {
   "text": " بالإضافة",
-  "startMs": 41300,
+  "startMs": 41470,
   "endMs": 42050,
   "timestampMs": 41560,
   "confidence": 0.999899
  },
  {
   "text": " إلى",
-  "startMs": 42050,
+  "startMs": 42260,
   "endMs": 42340,
-  "timestampMs": 42420,
+  "timestampMs": 42260,
   "confidence": 0.996829
  },
  {
@@ -792,7 +792,7 @@
  },
  {
   "text": " ما",
-  "startMs": 45910,
+  "startMs": 45970,
   "endMs": 46100,
   "timestampMs": 46260,
   "confidence": 0.954868
@@ -827,9 +827,9 @@
  },
  {
   "text": " لكن",
-  "startMs": 48220,
+  "startMs": 48450,
   "endMs": 48530,
-  "timestampMs": 48700,
+  "timestampMs": 48450,
   "confidence": 0.99984
  },
  {
@@ -841,7 +841,7 @@
  },
  {
   "text": " شيء",
-  "startMs": 48930,
+  "startMs": 49030,
   "endMs": 49260,
   "timestampMs": 49260,
   "confidence": 0.999561
@@ -890,7 +890,7 @@
  },
  {
   "text": " الصعوبة",
-  "startMs": 51690,
+  "startMs": 51830,
   "endMs": 52360,
   "timestampMs": 52040,
   "confidence": 0.998955
@@ -904,7 +904,7 @@
  },
  {
   "text": " بمعنى",
-  "startMs": 53260,
+  "startMs": 53330,
   "endMs": 53680,
   "timestampMs": 53380,
   "confidence": 0.999316
@@ -988,16 +988,16 @@
  },
  {
   "text": " هو",
-  "startMs": 57980,
+  "startMs": 58070,
   "endMs": 58150,
-  "timestampMs": 58340,
+  "timestampMs": 58070,
   "confidence": 0.996531
  },
  {
   "text": " في",
-  "startMs": 58150,
+  "startMs": 58240,
   "endMs": 58320,
-  "timestampMs": 58480,
+  "timestampMs": 58240,
   "confidence": 0.999866
  },
  {
@@ -1023,7 +1023,7 @@
  },
  {
   "text": " علامة",
-  "startMs": 59390,
+  "startMs": 59460,
   "endMs": 59880,
   "timestampMs": 59800,
   "confidence": 0.991928
@@ -1065,21 +1065,21 @@
  },
  {
   "text": " هو",
-  "startMs": 61260,
+  "startMs": 61420,
   "endMs": 61500,
-  "timestampMs": 61720,
+  "timestampMs": 61420,
   "confidence": 0.999037
  },
  {
   "text": " بالضبط",
-  "startMs": 61500,
+  "startMs": 61660,
   "endMs": 62110,
   "timestampMs": 61920,
   "confidence": 0.999851
  },
  {
   "text": " اللحظة",
-  "startMs": 62110,
+  "startMs": 62530,
   "endMs": 62670,
   "timestampMs": 62700,
   "confidence": 0.994701
@@ -1093,9 +1093,9 @@
  },
  {
   "text": " اللي",
-  "startMs": 63500,
+  "startMs": 63750,
   "endMs": 63830,
-  "timestampMs": 63960,
+  "timestampMs": 63750,
   "confidence": 0.468082
  },
  {
@@ -1184,7 +1184,7 @@
  },
  {
   "text": " تابع",
-  "startMs": 68120,
+  "startMs": 68250,
   "endMs": 68450,
   "timestampMs": 68300,
   "confidence": 0.998929
@@ -1198,7 +1198,7 @@
  },
  {
   "text": " لأنه",
-  "startMs": 68970,
+  "startMs": 69220,
   "endMs": 69440,
   "timestampMs": 69260,
   "confidence": 0.998946
@@ -1226,7 +1226,7 @@
  },
  {
   "text": " أشارك",
-  "startMs": 70040,
+  "startMs": 70260,
   "endMs": 70450,
   "timestampMs": 70460,
   "confidence": 0.975654
@@ -1261,7 +1261,7 @@
  },
  {
   "text": " تغير",
-  "startMs": 72160,
+  "startMs": 72390,
   "endMs": 72480,
   "timestampMs": 72420,
   "confidence": 0.635821
