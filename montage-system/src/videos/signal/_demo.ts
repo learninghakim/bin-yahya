@@ -8,6 +8,7 @@ export const signalDemo: SignalSpec = {
   id: "Signal-Gallery",
   video: "",
   duration: 33,
+  sfx: false, // visual gallery — sounds are demonstrated in real videos
   beats: [
     { from: 0, to: 2.6, kind: "hookCam", highlight: ["الأسرار"], words: [{ text: "أهم", at: 0.2 }, { text: "3", at: 0.5 }, { text: "الأسرار", at: 0.9 }, { text: "للحفظ", at: 1.4 }] },
     { from: 2.6, to: 5.2, kind: "burst", icon: "zap", at: 2.7, highlight: ["فكرة"], words: [{ text: "فكرة", at: 3.2 }, { text: "صادمة", at: 3.6 }] },

@@ -5,7 +5,7 @@
 // No colour grade on the person (identity rule): the look lives in the graphics.
 // ─────────────────────────────────────────────────────────────────────────────
 import React from "react";
-import { AbsoluteFill, Audio, CalculateMetadataFunction, Sequence, staticFile, useVideoConfig } from "remotion";
+import { AbsoluteFill, Audio, CalculateMetadataFunction, Easing, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { parseMedia } from "@remotion/media-parser";
 import type { Caption } from "@remotion/captions";
 import { TalkingHead } from "../../components/footage/TalkingHead";
@@ -15,7 +15,7 @@ import { VIDEO } from "../../system/safeArea";
 import { SceneClock } from "./clock";
 import { Panel } from "./Panel";
 import { Burst, DisplayWords, HookCam, Slam, Stage, StageBackdrop, Viewfinder } from "./moments";
-import { Barbell, Bolt, Book, BrainNet, Float, FollowArt, ForgetCurve, Gauge, Habits, IllusionBar, Journey, Toggle } from "./art";
+import { HookShatter, Barbell, Bolt, Book, BrainNet, Float, FollowArt, ForgetCurve, Gauge, Habits, IllusionBar, Journey, Toggle } from "./art";
 import { AbsoluteFill as AF } from "remotion";
 import { SignalCaptions } from "./SignalCaptions";
 import { autoSfx, SIGNAL_SFX } from "./sfx";
@@ -47,6 +47,7 @@ const WidgetView: React.FC<{ w: Widget }> = ({ w }) => {
 
 const ArtView: React.FC<{ a: Art }> = ({ a }) => {
   switch (a.type) {
+    case "hookShatter": return <HookShatter checks={a.checks} shatterAt={a.shatterAt} />;
     case "gauge": return <Gauge at={a.at} settleAt={a.settleAt} left={a.left} right={a.right} />;
     case "bolt": return <Bolt at={a.at} />;
     case "illusion": return <IllusionBar fillAt={a.fillAt} trickAt={a.trickAt} full={a.full} trick={a.trick} />;
@@ -100,6 +101,40 @@ const BeatView: React.FC<{ b: Beat }> = ({ b }) => {
   }
 };
 
+/**
+ * Camera FX on the footage, driven by hook beats: a punch-in from 1.28× at `punchAt` (+ white flash)
+ * and a decaying shake at `shatterAt`.
+ */
+const CameraFX: React.FC<{ beats: Beat[]; children: React.ReactNode }> = ({ beats, children }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  let scale = 1, dx = 0, dy = 0, flash = 0, red = 0;
+  for (const b of beats) {
+    if (b.kind !== "art" || b.art.type !== "hookShatter") continue;
+    const { punchAt, shatterAt } = b.art;
+    const p = interpolate(t, [punchAt, punchAt + 0.32], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.bezier(0.2, 0.8, 0.2, 1) });
+    if (t >= punchAt) scale *= 1.28 - 0.28 * p;
+    flash = Math.max(flash, interpolate(t, [punchAt, punchAt + 0.03, punchAt + 0.2], [0, 0.7, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
+    const k = t - shatterAt;
+    if (k >= 0 && k < 0.5) {
+      const amp = 22 * Math.exp(-k * 7);
+      dx += Math.sin(k * 90) * amp;
+      dy += Math.cos(k * 77) * amp * 0.7;
+      scale *= 1 + 0.06 * Math.exp(-k * 6);
+      flash = Math.max(flash, interpolate(k, [0, 0.03, 0.15], [0, 0.45, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
+    }
+    red = Math.max(red, interpolate(k, [0, 0.08, 0.55], [0, 0.32, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
+  }
+  return (
+    <AbsoluteFill>
+      <AbsoluteFill style={{ transform: `translate(${dx}px, ${dy}px) scale(${scale})`, transformOrigin: "50% 35%" }}>{children}</AbsoluteFill>
+      {red > 0 ? <AbsoluteFill style={{ background: "#FF3B2F", opacity: red, mixBlendMode: "multiply" }} /> : null}
+      {flash > 0 ? <AbsoluteFill style={{ background: "#fff", opacity: flash }} /> : null}
+    </AbsoluteFill>
+  );
+};
+
 export const SignalReel: React.FC<SignalProps> = ({ spec, resolved }) => {
   const { fps } = useVideoConfig();
   const f = (s: number) => Math.round(s * fps);
@@ -109,7 +144,9 @@ export const SignalReel: React.FC<SignalProps> = ({ spec, resolved }) => {
 
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <TalkingHead src={spec.video} segments={spec.segments ?? resolved?.segments} zooms={spec.zooms} volume={spec.videoVolume ?? 1} />
+      <CameraFX beats={spec.beats}>
+        <TalkingHead src={spec.video} segments={spec.segments ?? resolved?.segments} zooms={spec.zooms} volume={spec.videoVolume ?? 1} />
+      </CameraFX>
       {spec.beats.map((b, i) => (
         <Sequence key={i} from={f(b.from)} durationInFrames={Math.max(1, f(b.to) - f(b.from))} name={`${b.kind} ${i + 1}`}>
           <SceneClock from={b.from} to={b.to}>
@@ -119,7 +156,7 @@ export const SignalReel: React.FC<SignalProps> = ({ spec, resolved }) => {
       ))}
       {captions.length ? <SignalCaptions captions={captions} /> : null}
       {sounds.map((s, i) => (
-        <Sequence key={`s${i}`} from={Math.max(0, f(s.at) - 1)} durationInFrames={f(0.8)} layout="none">
+        <Sequence key={`s${i}`} from={Math.max(0, f(s.at - SIGNAL_SFX[s.name].lead))} durationInFrames={f(SIGNAL_SFX[s.name].lead + 2.7)} layout="none">
           <Audio src={staticFile(SIGNAL_SFX[s.name].file)} volume={SIGNAL_SFX[s.name].volume} />
         </Sequence>
       ))}

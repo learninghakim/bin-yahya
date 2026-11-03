@@ -9,7 +9,8 @@ export const signal_06r: SignalSpec = {
   video: "raw/2026-11-03_06r.mp4",
   captions: { src: "captions/2026-11-03_06r.json" },
   zooms: [
-    { at: 2.42, scale: 1.08, focusY: 0.3 }, // "تعال خلينا أصدمك"
+    { at: 2.42, scale: 1.06, style: "smooth", focusY: 0.3 }, // slow push-in through "تعال خلينا" (riser)
+    { at: 3.28, scale: 1.14, focusY: 0.3 }, // snap on "أصدمك"
     { at: 5.19, scale: 1 },
     { at: 15.18, scale: 1.06, style: "smooth", focusY: 0.3 }, // "فكرته الصادمة" — face only, captions carry it
     { at: 17.0, scale: 1 },
@@ -19,10 +20,13 @@ export const signal_06r: SignalSpec = {
     { at: 50.95, scale: 1 },
   ],
   beats: [
-    // 0–2.4 "لو تحس إن مذاكرتك سهلة ومريحة" — comfort gauge swings into the easy zone
-    { from: 0, to: 2.5, kind: "art", viewfinder: true, art: { type: "gauge", at: 1.34, settleAt: 1.67, left: "متعبة", right: "مريحة" } },
-    // "تعال خلينا أصدمك" — a bolt strikes on "أصدمك"
-    { from: 2.75, to: 5.1, kind: "art", art: { type: "bolt", at: 2.95 } },
+    // HOOK 0–5.1 (viral "you're doing it wrong"): camera punch + flash on frame 0, ✓ "سهلة" / ✓ "مريحة" stamp on
+    // as he says them, a riser builds through "تعال خلينا", and on "أصدمك" the badges shatter, a red ✗ slams in,
+    // the frame shakes (glitch + hit + boom). Shards are gone by "هذا الكتاب أثبت".
+    {
+      from: 0, to: 4.6, kind: "art", y: 1100,
+      art: { type: "hookShatter", punchAt: 0, checks: [{ text: "سهلة", at: 1.34 }, { text: "مريحة", at: 1.67 }], shatterAt: 3.28 },
+    },
     // "المذاكرة اللي ما تتعبك هي أكبر خدعة يخدعك فيها عقلك" — 'understood' bar fills, then glitches and collapses
     { from: 5.2, to: 9.0, kind: "art", art: { type: "illusion", fillAt: 5.4, trickAt: 7.42, full: "فاهم", trick: "خدعة" } },
     // "الكتاب اسمه Make It Stick ألّفه ثلاثة من كبار باحثي علم التعلم والإدراك" — the book opens, 3 researchers

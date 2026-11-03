@@ -9,7 +9,9 @@ import type { Step } from "./widgets/Stepper";
 import type { Bar } from "./widgets/Bars";
 import type { Chip } from "./widgets/Chips";
 
-export type SignalSfx = "boom" | "tick" | "tick2" | "swish" | "tap";
+export type SignalSfx =
+  | "riser" | "boom" | "suck" | "hit" | "punch" | "whoosh" | "whoosh2" | "swoosh" | "whooshLow"
+  | "glitch" | "reveal" | "zap" | "shutter" | "pop" | "click" | "tick" | "tick2" | "notify" | "chime";
 
 export type Widget =
   | { type: "checklist"; rows: Row[] }
@@ -23,6 +25,7 @@ export type Widget =
 
 /** Illustrative motion graphics (see art.tsx). Times are absolute seconds. */
 export type Art =
+  | { type: "hookShatter"; punchAt: number; checks: { text: string; at: number }[]; shatterAt: number }
   | { type: "gauge"; at: number; settleAt?: number; left: string; right: string }
   | { type: "bolt"; at: number }
   | { type: "illusion"; fillAt: number; trickAt: number; full: string; trick: string }

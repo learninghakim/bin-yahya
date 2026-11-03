@@ -431,3 +431,52 @@ export const Bolt: React.FC<{ at: number }> = ({ at }) => {
     </div>
   );
 };
+
+// ── 0. HOOK SHATTER — viral "you're doing it wrong" hook ─────────────────────────────────
+// Frame 0: camera punch + flash (see CameraFX in SignalReel). Check-badges stamp on as the speaker
+// names the comfortable belief; on the shock word they SHATTER into shards, a huge red ✗ slams in
+// with RGB split, the frame shakes, and the shards fly off.
+export const HookShatter: React.FC<{ checks: { text: string; at: number }[]; shatterAt: number }> = ({ checks, shatterAt }) => {
+  const { t } = useNow();
+  const sh = prog(t, shatterAt, 0.55, S.ease.out); // shard flight
+  const xs = prog(t, shatterAt + 0.04, 0.22, S.ease.out); // ✗ slam
+  const rgb = t >= shatterAt && t < shatterAt + 0.3 ? (1 - (t - shatterAt) / 0.3) * 14 : 0;
+  const shards = [
+    "polygon(0 0, 55% 0, 40% 60%, 0 45%)",
+    "polygon(55% 0, 100% 0, 100% 50%, 40% 60%)",
+    "polygon(0 45%, 40% 60%, 30% 100%, 0 100%)",
+    "polygon(40% 60%, 100% 50%, 100% 100%, 30% 100%)",
+  ];
+  const fly = [[-260, -180, -40], [240, -220, 35], [-220, 200, 30], [260, 160, -45]];
+  const badge = (c: { text: string; at: number }, i: number) => {
+    const p = prog(t, c.at - 0.05, 0.22, S.ease.out);
+    const stamp = 1.35 - 0.35 * p; // stamps down (no bounce)
+    const body = (
+      <div style={{ display: "flex", alignItems: "center", gap: 18, padding: "18px 34px", borderRadius: 28, background: C.lime, color: C.ink, fontFamily: S.font.ui, fontWeight: 700, fontSize: 86, boxShadow: `0 20px 50px -10px ${C.shadow}`, direction: "rtl", whiteSpace: "nowrap" }}>
+        <Icon name="check" size={76} color={C.ink} strokeWidth={3.4} />
+        {c.text}
+      </div>
+    );
+    return (
+      <div key={i} style={{ position: "relative", opacity: p, transform: `scale(${stamp}) rotate(${i % 2 ? 3 : -3}deg)` }}>
+        {t < shatterAt ? body : shards.map((cp, k) => (
+          <div key={k} style={{ position: k ? "absolute" : "relative", inset: 0, clipPath: cp, transform: `translate(${fly[k][0] * sh}px, ${fly[k][1] * sh + 300 * sh * sh}px) rotate(${fly[k][2] * sh}deg)`, opacity: 1 - sh, filter: `saturate(${1 - sh}) hue-rotate(${-80 * sh}deg)` }}>{body}</div>
+        ))}
+      </div>
+    );
+  };
+  return (
+    <div style={{ position: "relative", width: 1080, height: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 34 }}>{checks.map(badge)}</div>
+      {t >= shatterAt ? (
+        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", opacity: xs, transform: `scale(${1.7 - 0.7 * xs})` }}>
+          {[["#ff2a6d", -rgb], ["#22d3ee", rgb], [C.danger, 0]].map(([col, dx], k) => (
+            <svg key={k} width={420} height={420} viewBox="0 0 24 24" style={{ position: "absolute", transform: `translateX(${dx}px)`, opacity: k < 2 ? 0.7 : 1, mixBlendMode: k < 2 ? "screen" : "normal", filter: k === 2 ? `drop-shadow(0 12px 40px ${C.shadow})` : undefined }}>
+              <path d="M5 5L19 19M19 5L5 19" stroke={col as string} strokeWidth={3.6} strokeLinecap="round" />
+            </svg>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+};

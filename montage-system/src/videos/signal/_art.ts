@@ -10,6 +10,7 @@ export const signalArt: SignalSpec = {
   duration: 40,
   sfx: false,
   beats: [
+    // hookShatter is the default viral opener; see signal-2026-11-03-06r 0–4.6s
     { from: 0, to: 3, kind: "art", viewfinder: true, art: { type: "gauge", at: 1.0, settleAt: 1.6, left: "متعبة", right: "مريحة" } },
     { from: 3, to: 5.5, kind: "art", art: { type: "bolt", at: 3.3 } },
     { from: 5.5, to: 9, kind: "art", art: { type: "illusion", fillAt: 5.7, trickAt: 7.4, full: "فاهم", trick: "خدعة" } },

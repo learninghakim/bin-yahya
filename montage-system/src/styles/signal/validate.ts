@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import type { Caption } from "@remotion/captions";
 import { chunkCaptions, chunkFontSize } from "./chunks";
-import { autoSfx } from "./sfx";
+import { autoSfx, SIGNAL_SFX } from "./sfx";
 import type { Beat, SignalSpec } from "./types";
 
 export type Report = { errors: string[]; warnings: string[]; info: string[] };
@@ -61,12 +61,20 @@ export const validateSignal = (spec: SignalSpec, duration: number, caps: Caption
 
   // ── sound
   const sfx = [...(spec.sfx === false ? [] : autoSfx(beats)), ...(spec.sfxExtra ?? [])].sort((a, b) => a.at - b.at);
-  sfx.forEach((s) => { if (s.at < 0 || s.at > duration) r.errors.push(`sfx ${s.name} at ${s.at.toFixed(2)}s is outside the video`); });
-  sfx.forEach((s, i) => { if (i && s.at - sfx[i - 1].at < 0.12) r.warnings.push(`sfx ${sfx[i - 1].name}+${s.name} at ${s.at.toFixed(2)}s are < 0.12s apart (they smear)`); });
+  sfx.forEach((s) => {
+    if (!SIGNAL_SFX[s.name]) r.errors.push(`unknown sfx "${s.name}"`);
+    else if (s.at - SIGNAL_SFX[s.name].lead < -0.01 || s.at > duration) r.errors.push(`sfx ${s.name} at ${s.at.toFixed(2)}s starts outside the video (lead ${SIGNAL_SFX[s.name].lead}s)`);
+  });
+  // same file twice within 0.6 s sounds like a stutter
+  sfx.forEach((s, i) => sfx.slice(0, i).forEach((p) => { if (p.name === s.name && s.at - p.at < 0.6 && s.at !== p.at) r.warnings.push(`sfx "${s.name}" repeats within ${(s.at - p.at).toFixed(2)}s at ${s.at.toFixed(2)}s`); }));
+  // the same UI sound on consecutive cues = repetitive
+  const ui = sfx.filter((s) => ["pop", "tick", "tick2", "click"].includes(s.name));
+  ui.forEach((s, i) => { if (i && s.name === ui[i - 1].name && s.at - ui[i - 1].at < 3) r.warnings.push(`UI sound "${s.name}" used twice in a row (${ui[i - 1].at.toFixed(2)}s, ${s.at.toFixed(2)}s)`); });
   const perMin = (sfx.length / duration) * 60;
   const booms = sfx.filter((s) => s.name === "boom").length;
   r.info.push(`sfx: ${sfx.length} total (${perMin.toFixed(0)}/min), ${booms} booms, ${sfx.filter((s) => s.name.startsWith("tick")).length} pings`);
   if (perMin > 24) r.warnings.push(`${perMin.toFixed(0)} sounds/min — keep sounds for meaningful moments`);
+  r.info.push(`distinct sound files used: ${new Set(sfx.map((s) => s.name)).size}`);
   if (booms / duration * 60 > 8) r.warnings.push(`too many booms (${booms}) — keep them for world changes`);
 
   // ── captions
