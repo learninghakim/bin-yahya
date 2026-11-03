@@ -13,6 +13,6 @@ mkdirSync(dir, { recursive: true });
 const secs = times.length ? times.map(Number) : [0.5, 2, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34];
 for (const s of secs) {
   const frame = Math.round(s * 30);
-  run("npx", ["remotion", "still", "src/index.ts", id, path.join(dir, `t${String(s).padStart(5, "0")}.png`), `--frame=${frame}`, "--log=error", ...browserArgs()]);
+  run("npx", ["remotion", "still", "src/index.ts", id, path.join(dir, `t${s.toFixed(1).padStart(5, "0")}.png`), `--frame=${frame}`, "--log=error", ...browserArgs()]);
 }
 console.log(`Stills in out/stills/${id}/`);
