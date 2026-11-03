@@ -5,6 +5,8 @@ import { Reel } from "./system/Reel";
 import { calculateReelMetadata } from "./system/calculateMetadata";
 import { videos } from "./videos";
 import * as Ex from "./examples/Examples";
+import { calculateSignalMetadata, SignalReel } from "./styles/signal/SignalReel";
+import { signalVideos } from "./videos/signal";
 import "./theme/fonts";
 
 const common = { width: VIDEO.width, height: VIDEO.height, fps: VIDEO.fps } as const;
@@ -22,6 +24,11 @@ export const RemotionRoot: React.FC = () => (
           defaultProps={{ spec }}
           calculateMetadata={calculateReelMetadata}
         />
+      ))}
+    </Folder>
+    <Folder name="Signal">
+      {signalVideos.map((spec) => (
+        <Composition key={spec.id} id={spec.id} component={SignalReel} {...common} durationInFrames={30 * VIDEO.fps} defaultProps={{ spec }} calculateMetadata={calculateSignalMetadata} />
       ))}
     </Folder>
     <Folder name="Examples">

@@ -4,3 +4,6 @@ out
 # Raw footage lives in GitHub Releases (too big for git) and is pulled with `npm run fetch-raw <tag>`.
 public/raw/*
 !public/raw/.gitkeep
+
+# Reference reels (third-party content, analysis only)
+references/*.mp4

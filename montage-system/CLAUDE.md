@@ -27,6 +27,15 @@ Remotion system that turns a raw talking-head clip into an Instagram Reel (1080�
    **Never render the final video unless the user explicitly says so.** When they do:
    `npm run render <id> [--client <client-slug>]` → `out/<id>.mp4` (+ copy to `../clients/<slug>/deliveries/`).
 
+## Styles
+- **Default** (`src/templates`, `ReelSpec`, Studio folder "Videos").
+- **Signal** (`src/styles/signal`, `SignalSpec`, Studio folder "Signal") — dark UI panels on the chest, full-screen
+  stage moments, bottom captions for EVERY word (chunked capsule, current word lime), sub-boom + soft pings.
+  Read `src/styles/signal/README.md` before editing with it. New video: `npm run new <slug> -- --signal`.
+  Gallery of every beat/widget: `src/videos/signal/_demo.ts` (composition `Signal-Gallery`).
+  Times in SignalSpec are ABSOLUTE seconds; `to` = last word + 0.45. Panels y≈880–1380, captions y≈1440.
+- Reference reels for style analysis go in `references/` (gitignored, never committed).
+
 ## Map
 - `src/system/` — `types.ts` (ReelSpec), `Reel.tsx` (layer stack), `calculateMetadata.ts` (auto duration, captions),
   `timeline.ts` (segments/retiming), `safeArea.ts` (IG safe zone), `sfx.tsx`
