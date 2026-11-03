@@ -1,0 +1,4 @@
+Fonts from Google Fonts, all licensed under the SIL Open Font License 1.1:
+- Marhey (Paper style)
+- IBM Plex Sans Arabic (Newsroom style)
+- Changa (Punch style)

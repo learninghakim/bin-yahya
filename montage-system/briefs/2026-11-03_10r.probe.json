@@ -1,0 +1,18 @@
+{
+  "file": "raw/2026-11-03_10r.mp4",
+  "duration": 65.71,
+  "width": 1080,
+  "height": 1920,
+  "rotation": 0,
+  "vertical": true,
+  "fps": 30,
+  "audio": "aac 48000Hz",
+  "silences": [],
+  "suggestedSegments": [
+    {
+      "start": 0,
+      "end": 65.71
+    }
+  ],
+  "editedDuration": 65.71
+}

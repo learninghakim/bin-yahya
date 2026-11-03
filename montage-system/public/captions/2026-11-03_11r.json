@@ -1,0 +1,919 @@
+[
+ {
+  "text": "هذه",
+  "startMs": 100,
+  "endMs": 340,
+  "timestampMs": 340,
+  "confidence": 0.793113
+ },
+ {
+  "text": " للأسف",
+  "startMs": 340,
+  "endMs": 920,
+  "timestampMs": 540,
+  "confidence": 0.865851
+ },
+ {
+  "text": " كذبة",
+  "startMs": 1120,
+  "endMs": 1290,
+  "timestampMs": 1240,
+  "confidence": 0.776601
+ },
+ {
+  "text": " تعليمية",
+  "startMs": 1290,
+  "endMs": 2110,
+  "timestampMs": 1640,
+  "confidence": 0.89368
+ },
+ {
+  "text": " قيدت",
+  "startMs": 2230,
+  "endMs": 2440,
+  "timestampMs": 2420,
+  "confidence": 0.763298
+ },
+ {
+  "text": " عقولنا",
+  "startMs": 2440,
+  "endMs": 3120,
+  "timestampMs": 2840,
+  "confidence": 0.982583
+ },
+ {
+  "text": " وصدقناها",
+  "startMs": 3120,
+  "endMs": 3840,
+  "timestampMs": 3280,
+  "confidence": 0.869647
+ },
+ {
+  "text": " فكرة",
+  "startMs": 3980,
+  "endMs": 4200,
+  "timestampMs": 4120,
+  "confidence": 0.9694
+ },
+ {
+  "text": " إن",
+  "startMs": 4200,
+  "endMs": 4380,
+  "timestampMs": 4520,
+  "confidence": 0.796145
+ },
+ {
+  "text": " البشر",
+  "startMs": 4380,
+  "endMs": 4920,
+  "timestampMs": 4700,
+  "confidence": 0.98049
+ },
+ {
+  "text": " مقسمين",
+  "startMs": 4920,
+  "endMs": 5370,
+  "timestampMs": 5020,
+  "confidence": 0.99145
+ },
+ {
+  "text": " لأنماط",
+  "startMs": 5370,
+  "endMs": 6040,
+  "timestampMs": 5540,
+  "confidence": 0.959346
+ },
+ {
+  "text": " سمعي",
+  "startMs": 6190,
+  "endMs": 6500,
+  "timestampMs": 6440,
+  "confidence": 0.786726
+ },
+ {
+  "text": " وبصري",
+  "startMs": 6500,
+  "endMs": 7190,
+  "timestampMs": 6940,
+  "confidence": 0.40997
+ },
+ {
+  "text": " وحركي",
+  "startMs": 7190,
+  "endMs": 7960,
+  "timestampMs": 7480,
+  "confidence": 0.982719
+ },
+ {
+  "text": " وإنك",
+  "startMs": 8120,
+  "endMs": 8360,
+  "timestampMs": 8240,
+  "confidence": 0.977377
+ },
+ {
+  "text": " مستحيل",
+  "startMs": 8360,
+  "endMs": 9070,
+  "timestampMs": 8740,
+  "confidence": 0.982706
+ },
+ {
+  "text": " تفهم",
+  "startMs": 9070,
+  "endMs": 9400,
+  "timestampMs": 9180,
+  "confidence": 0.953906
+ },
+ {
+  "text": " إلا",
+  "startMs": 9620,
+  "endMs": 9700,
+  "timestampMs": 9620,
+  "confidence": 0.959368
+ },
+ {
+  "text": " إذا",
+  "startMs": 9700,
+  "endMs": 10110,
+  "timestampMs": 10100,
+  "confidence": 0.983699
+ },
+ {
+  "text": " شرحوا",
+  "startMs": 10110,
+  "endMs": 10520,
+  "timestampMs": 10400,
+  "confidence": 0.973564
+ },
+ {
+  "text": " لك",
+  "startMs": 10520,
+  "endMs": 10720,
+  "timestampMs": 10720,
+  "confidence": 0.953875
+ },
+ {
+  "text": " بنمطك",
+  "startMs": 11000,
+  "endMs": 11260,
+  "timestampMs": 11200,
+  "confidence": 0.867078
+ },
+ {
+  "text": " الخاص",
+  "startMs": 11260,
+  "endMs": 11960,
+  "timestampMs": 11680,
+  "confidence": 0.99906
+ },
+ {
+  "text": " هذه",
+  "startMs": 12140,
+  "endMs": 12240,
+  "timestampMs": 12400,
+  "confidence": 0.880715
+ },
+ {
+  "text": " تسمعها",
+  "startMs": 12240,
+  "endMs": 12990,
+  "timestampMs": 12540,
+  "confidence": 0.974446
+ },
+ {
+  "text": " في",
+  "startMs": 12990,
+  "endMs": 13070,
+  "timestampMs": 13040,
+  "confidence": 0.997012
+ },
+ {
+  "text": " المدارس",
+  "startMs": 13070,
+  "endMs": 13680,
+  "timestampMs": 13240,
+  "confidence": 0.967534
+ },
+ {
+  "text": " وفي",
+  "startMs": 13850,
+  "endMs": 14040,
+  "timestampMs": 14020,
+  "confidence": 0.963472
+ },
+ {
+  "text": " دورات",
+  "startMs": 14040,
+  "endMs": 14400,
+  "timestampMs": 14240,
+  "confidence": 0.996713
+ },
+ {
+  "text": " تطوير",
+  "startMs": 14400,
+  "endMs": 14850,
+  "timestampMs": 14560,
+  "confidence": 0.986115
+ },
+ {
+  "text": " الذات",
+  "startMs": 14850,
+  "endMs": 15360,
+  "timestampMs": 15020,
+  "confidence": 0.954575
+ },
+ {
+  "text": " وللأسف",
+  "startMs": 15510,
+  "endMs": 15920,
+  "timestampMs": 15740,
+  "confidence": 0.744952
+ },
+ {
+  "text": " الكل",
+  "startMs": 15920,
+  "endMs": 16410,
+  "timestampMs": 16400,
+  "confidence": 0.797939
+ },
+ {
+  "text": " يتعامل",
+  "startMs": 16410,
+  "endMs": 16870,
+  "timestampMs": 16700,
+  "confidence": 0.985661
+ },
+ {
+  "text": " معها",
+  "startMs": 16870,
+  "endMs": 17560,
+  "timestampMs": 17260,
+  "confidence": 0.99659
+ },
+ {
+  "text": " على",
+  "startMs": 17560,
+  "endMs": 17680,
+  "timestampMs": 17580,
+  "confidence": 0.930797
+ },
+ {
+  "text": " أنها",
+  "startMs": 17680,
+  "endMs": 18100,
+  "timestampMs": 17740,
+  "confidence": 0.963166
+ },
+ {
+  "text": " حقيقة",
+  "startMs": 18100,
+  "endMs": 18660,
+  "timestampMs": 18160,
+  "confidence": 0.980615
+ },
+ {
+  "text": " علمية",
+  "startMs": 18660,
+  "endMs": 19140,
+  "timestampMs": 18760,
+  "confidence": 0.989462
+ },
+ {
+  "text": " مقدسة",
+  "startMs": 19140,
+  "endMs": 19720,
+  "timestampMs": 19180,
+  "confidence": 0.960222
+ },
+ {
+  "text": " ومفروغ",
+  "startMs": 19850,
+  "endMs": 20280,
+  "timestampMs": 19980,
+  "confidence": 0.912233
+ },
+ {
+  "text": " منها",
+  "startMs": 20280,
+  "endMs": 20720,
+  "timestampMs": 20600,
+  "confidence": 0.933675
+ },
+ {
+  "text": " لكن",
+  "startMs": 20820,
+  "endMs": 20970,
+  "timestampMs": 21140,
+  "confidence": 0.977903
+ },
+ {
+  "text": " مراجعات",
+  "startMs": 20970,
+  "endMs": 21720,
+  "timestampMs": 21300,
+  "confidence": 0.974642
+ },
+ {
+  "text": " علم",
+  "startMs": 21720,
+  "endMs": 21830,
+  "timestampMs": 21820,
+  "confidence": 0.871304
+ },
+ {
+  "text": " النفس",
+  "startMs": 21830,
+  "endMs": 22220,
+  "timestampMs": 22060,
+  "confidence": 0.532315
+ },
+ {
+  "text": " الإدراكي",
+  "startMs": 22220,
+  "endMs": 22920,
+  "timestampMs": 22320,
+  "confidence": 0.479602
+ },
+ {
+  "text": " تقول",
+  "startMs": 22920,
+  "endMs": 23280,
+  "timestampMs": 22920,
+  "confidence": 0.965687
+ },
+ {
+  "text": " أنه",
+  "startMs": 23440,
+  "endMs": 23580,
+  "timestampMs": 23640,
+  "confidence": 0.394613
+ },
+ {
+  "text": " ما",
+  "startMs": 23580,
+  "endMs": 23780,
+  "timestampMs": 23820,
+  "confidence": 0.877574
+ },
+ {
+  "text": " في",
+  "startMs": 23780,
+  "endMs": 23980,
+  "timestampMs": 23940,
+  "confidence": 0.772599
+ },
+ {
+  "text": " ولا",
+  "startMs": 23980,
+  "endMs": 24380,
+  "timestampMs": 24120,
+  "confidence": 0.947895
+ },
+ {
+  "text": " بحث",
+  "startMs": 24380,
+  "endMs": 24580,
+  "timestampMs": 24280,
+  "confidence": 0.977191
+ },
+ {
+  "text": " علمي",
+  "startMs": 24580,
+  "endMs": 24980,
+  "timestampMs": 24620,
+  "confidence": 0.975766
+ },
+ {
+  "text": " يثبت",
+  "startMs": 24980,
+  "endMs": 25400,
+  "timestampMs": 24880,
+  "confidence": 0.995564
+ },
+ {
+  "text": " أنه",
+  "startMs": 25560,
+  "endMs": 25670,
+  "timestampMs": 25760,
+  "confidence": 0.578245
+ },
+ {
+  "text": " لو",
+  "startMs": 25670,
+  "endMs": 25850,
+  "timestampMs": 25960,
+  "confidence": 0.997204
+ },
+ {
+  "text": " درست",
+  "startMs": 25850,
+  "endMs": 26390,
+  "timestampMs": 26140,
+  "confidence": 0.988112
+ },
+ {
+  "text": " بنمطك",
+  "startMs": 26390,
+  "endMs": 26660,
+  "timestampMs": 26440,
+  "confidence": 0.968341
+ },
+ {
+  "text": " الخاص",
+  "startMs": 26660,
+  "endMs": 27160,
+  "timestampMs": 26960,
+  "confidence": 0.998523
+ },
+ {
+  "text": " راح",
+  "startMs": 27340,
+  "endMs": 27530,
+  "timestampMs": 27480,
+  "confidence": 0.576476
+ },
+ {
+  "text": " تفهم",
+  "startMs": 27530,
+  "endMs": 27810,
+  "timestampMs": 27680,
+  "confidence": 0.987809
+ },
+ {
+  "text": " بشكل",
+  "startMs": 27810,
+  "endMs": 28180,
+  "timestampMs": 28020,
+  "confidence": 0.993839
+ },
+ {
+  "text": " أحسن",
+  "startMs": 28180,
+  "endMs": 28640,
+  "timestampMs": 28420,
+  "confidence": 0.985686
+ },
+ {
+  "text": " لكن",
+  "startMs": 28740,
+  "endMs": 28920,
+  "timestampMs": 29060,
+  "confidence": 0.924325
+ },
+ {
+  "text": " ارتياحك",
+  "startMs": 28920,
+  "endMs": 29740,
+  "timestampMs": 29180,
+  "confidence": 0.47712
+ },
+ {
+  "text": " ما",
+  "startMs": 29740,
+  "endMs": 29780,
+  "timestampMs": 29840,
+  "confidence": 0.536122
+ },
+ {
+  "text": " كان",
+  "startMs": 29780,
+  "endMs": 30080,
+  "timestampMs": 30020,
+  "confidence": 0.954841
+ },
+ {
+  "text": " أبداً",
+  "startMs": 30080,
+  "endMs": 30410,
+  "timestampMs": 30160,
+  "confidence": 0.794158
+ },
+ {
+  "text": " هو",
+  "startMs": 30410,
+  "endMs": 30830,
+  "timestampMs": 30660,
+  "confidence": 0.685733
+ },
+ {
+  "text": " اللي",
+  "startMs": 30830,
+  "endMs": 30890,
+  "timestampMs": 30820,
+  "confidence": 0.38279
+ },
+ {
+  "text": " يحدد",
+  "startMs": 30890,
+  "endMs": 31150,
+  "timestampMs": 30960,
+  "confidence": 0.984509
+ },
+ {
+  "text": " كيف",
+  "startMs": 31230,
+  "endMs": 31380,
+  "timestampMs": 31360,
+  "confidence": 0.947406
+ },
+ {
+  "text": " عقلك",
+  "startMs": 31380,
+  "endMs": 31670,
+  "timestampMs": 31600,
+  "confidence": 0.962147
+ },
+ {
+  "text": " يستوعب",
+  "startMs": 31670,
+  "endMs": 32160,
+  "timestampMs": 31880,
+  "confidence": 0.911228
+ },
+ {
+  "text": " ويثبت",
+  "startMs": 32270,
+  "endMs": 32660,
+  "timestampMs": 32380,
+  "confidence": 0.829454
+ },
+ {
+  "text": " المعلومة",
+  "startMs": 32660,
+  "endMs": 33480,
+  "timestampMs": 33000,
+  "confidence": 0.98419
+ },
+ {
+  "text": " والمشكلة",
+  "startMs": 33560,
+  "endMs": 34060,
+  "timestampMs": 33740,
+  "confidence": 0.920218
+ },
+ {
+  "text": " إن",
+  "startMs": 34060,
+  "endMs": 34210,
+  "timestampMs": 34340,
+  "confidence": 0.772065
+ },
+ {
+  "text": " هذا",
+  "startMs": 34210,
+  "endMs": 34590,
+  "timestampMs": 34680,
+  "confidence": 0.745429
+ },
+ {
+  "text": " الوهم",
+  "startMs": 34590,
+  "endMs": 34820,
+  "timestampMs": 34820,
+  "confidence": 0.996295
+ },
+ {
+  "text": " هو",
+  "startMs": 34820,
+  "endMs": 34970,
+  "timestampMs": 35320,
+  "confidence": 0.98984
+ },
+ {
+  "text": " اللي",
+  "startMs": 35190,
+  "endMs": 35270,
+  "timestampMs": 35190,
+  "confidence": 0.946324
+ },
+ {
+  "text": " جالس",
+  "startMs": 35270,
+  "endMs": 35630,
+  "timestampMs": 35560,
+  "confidence": 0.507642
+ },
+ {
+  "text": " يدمر",
+  "startMs": 35630,
+  "endMs": 35850,
+  "timestampMs": 35820,
+  "confidence": 0.994751
+ },
+ {
+  "text": " دراستك",
+  "startMs": 35850,
+  "endMs": 36480,
+  "timestampMs": 36200,
+  "confidence": 0.971525
+ },
+ {
+  "text": " وأنت",
+  "startMs": 36560,
+  "endMs": 36920,
+  "timestampMs": 36760,
+  "confidence": 0.447511
+ },
+ {
+  "text": " ما",
+  "startMs": 36920,
+  "endMs": 37040,
+  "timestampMs": 37100,
+  "confidence": 0.817189
+ },
+ {
+  "text": " تعرف",
+  "startMs": 37040,
+  "endMs": 37440,
+  "timestampMs": 37300,
+  "confidence": 0.967434
+ },
+ {
+  "text": " تحصل",
+  "startMs": 37550,
+  "endMs": 37800,
+  "timestampMs": 37620,
+  "confidence": 0.443978
+ },
+ {
+  "text": " الطالب",
+  "startMs": 37800,
+  "endMs": 38340,
+  "timestampMs": 38080,
+  "confidence": 0.968606
+ },
+ {
+  "text": " يقنع",
+  "startMs": 38340,
+  "endMs": 38700,
+  "timestampMs": 38360,
+  "confidence": 0.953453
+ },
+ {
+  "text": " نفسه",
+  "startMs": 38700,
+  "endMs": 39080,
+  "timestampMs": 38660,
+  "confidence": 0.995444
+ },
+ {
+  "text": " أنا",
+  "startMs": 39250,
+  "endMs": 39640,
+  "timestampMs": 39460,
+  "confidence": 0.434265
+ },
+ {
+  "text": " سمعي",
+  "startMs": 39640,
+  "endMs": 40160,
+  "timestampMs": 39680,
+  "confidence": 0.97687
+ },
+ {
+  "text": " وبالتالي",
+  "startMs": 40260,
+  "endMs": 40830,
+  "timestampMs": 40440,
+  "confidence": 0.975353
+ },
+ {
+  "text": " راح",
+  "startMs": 40830,
+  "endMs": 41250,
+  "timestampMs": 41280,
+  "confidence": 0.936652
+ },
+ {
+  "text": " أسمع",
+  "startMs": 41250,
+  "endMs": 41410,
+  "timestampMs": 41460,
+  "confidence": 0.335221
+ },
+ {
+  "text": " المحاضرة",
+  "startMs": 41410,
+  "endMs": 42090,
+  "timestampMs": 41740,
+  "confidence": 0.990522
+ },
+ {
+  "text": " وخلاص",
+  "startMs": 42090,
+  "endMs": 42600,
+  "timestampMs": 42240,
+  "confidence": 0.977006
+ },
+ {
+  "text": " راح",
+  "startMs": 42680,
+  "endMs": 42830,
+  "timestampMs": 42820,
+  "confidence": 0.949488
+ },
+ {
+  "text": " أفهم",
+  "startMs": 42830,
+  "endMs": 43130,
+  "timestampMs": 43000,
+  "confidence": 0.956997
+ },
+ {
+  "text": " منها",
+  "startMs": 43130,
+  "endMs": 43480,
+  "timestampMs": 43320,
+  "confidence": 0.973723
+ },
+ {
+  "text": " وبالتالي",
+  "startMs": 43580,
+  "endMs": 44380,
+  "timestampMs": 43740,
+  "confidence": 0.994861
+ },
+ {
+  "text": " يهرب",
+  "startMs": 44380,
+  "endMs": 44680,
+  "timestampMs": 44500,
+  "confidence": 0.991963
+ },
+ {
+  "text": " من",
+  "startMs": 44680,
+  "endMs": 44920,
+  "timestampMs": 44880,
+  "confidence": 0.994228
+ },
+ {
+  "text": " الكتابة",
+  "startMs": 44920,
+  "endMs": 45680,
+  "timestampMs": 45080,
+  "confidence": 0.993981
+ },
+ {
+  "text": " والاسترجاع",
+  "startMs": 45680,
+  "endMs": 46480,
+  "timestampMs": 45840,
+  "confidence": 0.911607
+ },
+ {
+  "text": " وحل",
+  "startMs": 46570,
+  "endMs": 46810,
+  "timestampMs": 46680,
+  "confidence": 0.9428
+ },
+ {
+  "text": " المسائل",
+  "startMs": 46810,
+  "endMs": 47600,
+  "timestampMs": 47100,
+  "confidence": 0.951248
+ },
+ {
+  "text": " اللي",
+  "startMs": 47710,
+  "endMs": 47920,
+  "timestampMs": 47980,
+  "confidence": 0.921845
+ },
+ {
+  "text": " هم",
+  "startMs": 47920,
+  "endMs": 48080,
+  "timestampMs": 48120,
+  "confidence": 0.930252
+ },
+ {
+  "text": " أساس",
+  "startMs": 48080,
+  "endMs": 48480,
+  "timestampMs": 48580,
+  "confidence": 0.967954
+ },
+ {
+  "text": " تثبيت",
+  "startMs": 48480,
+  "endMs": 48800,
+  "timestampMs": 48880,
+  "confidence": 0.980907
+ },
+ {
+  "text": " الروابط",
+  "startMs": 48800,
+  "endMs": 49360,
+  "timestampMs": 49320,
+  "confidence": 0.658227
+ },
+ {
+  "text": " في",
+  "startMs": 49360,
+  "endMs": 49520,
+  "timestampMs": 49660,
+  "confidence": 0.995175
+ },
+ {
+  "text": " الدماغ",
+  "startMs": 49580,
+  "endMs": 50080,
+  "timestampMs": 49780,
+  "confidence": 0.972993
+ },
+ {
+  "text": " فتنغلق",
+  "startMs": 50150,
+  "endMs": 50580,
+  "timestampMs": 50260,
+  "confidence": 0.974213
+ },
+ {
+  "text": " على",
+  "startMs": 50580,
+  "endMs": 50990,
+  "timestampMs": 50800,
+  "confidence": 0.976286
+ },
+ {
+  "text": " نفسك",
+  "startMs": 50990,
+  "endMs": 51290,
+  "timestampMs": 50920,
+  "confidence": 0.998771
+ },
+ {
+  "text": " داخل",
+  "startMs": 51290,
+  "endMs": 51690,
+  "timestampMs": 51380,
+  "confidence": 0.988056
+ },
+ {
+  "text": " قالب",
+  "startMs": 51690,
+  "endMs": 52190,
+  "timestampMs": 51720,
+  "confidence": 0.78594
+ },
+ {
+  "text": " وهمي",
+  "startMs": 52480,
+  "endMs": 52560,
+  "timestampMs": 52480,
+  "confidence": 0.836203
+ },
+ {
+  "text": " وتترك",
+  "startMs": 52640,
+  "endMs": 52980,
+  "timestampMs": 52880,
+  "confidence": 0.954017
+ },
+ {
+  "text": " الأدوات",
+  "startMs": 52980,
+  "endMs": 53670,
+  "timestampMs": 53340,
+  "confidence": 0.962118
+ },
+ {
+  "text": " الحقيقية",
+  "startMs": 53670,
+  "endMs": 54250,
+  "timestampMs": 53880,
+  "confidence": 0.99806
+ },
+ {
+  "text": " اللي",
+  "startMs": 54420,
+  "endMs": 54670,
+  "timestampMs": 54620,
+  "confidence": 0.939576
+ },
+ {
+  "text": " فعلاً",
+  "startMs": 54670,
+  "endMs": 54920,
+  "timestampMs": 54800,
+  "confidence": 0.975649
+ },
+ {
+  "text": " تصنع",
+  "startMs": 54920,
+  "endMs": 55240,
+  "timestampMs": 55120,
+  "confidence": 0.945283
+ },
+ {
+  "text": " التفوق",
+  "startMs": 55240,
+  "endMs": 55960,
+  "timestampMs": 55520,
+  "confidence": 0.983933
+ }
+]

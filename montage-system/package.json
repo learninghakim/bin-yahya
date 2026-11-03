@@ -14,7 +14,8 @@
     "check": "node scripts/check.mjs",
     "still": "node scripts/stills.mjs",
     "render": "node scripts/render.mjs",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "fix-words": "node scripts/fix-words.mjs"
   },
   "dependencies": {
     "@remotion/captions": "4.0.532",

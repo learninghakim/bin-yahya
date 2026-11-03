@@ -39,6 +39,12 @@ Remotion system that turns a raw talking-head clip into an Instagram Reel (1080�
   Invent a new art in `styles/signal/art.tsx` when no existing one fits the sentence.
   Always run `npm run check [id]` (static timing/SFX/caption checks) + stills of every beat's midpoint before handing off.
   Captions: `npm run transcribe` auto-snaps word starts to the audio (`npm run snap <slug>` to redo).
+- **Newsroom / Punch / Paper** (`src/styles/{news,punch,paper}`, specs in `src/videos/styles/`, Studio folder "Styles").
+  Times ABSOLUTE seconds (edited timeline). Newsroom = broadcast data story (breaking/cite/stat/versus/stage/rule/
+  prompt/verdict/cta, captions y≈1352, ticker y≈1452). Punch = bold kinetic chest captions (y≈1200) + auto punch-in
+  per sentence, emoji/title/number/slam/cta, `emphasis` word colours, `bw` windows, `flashes`. Paper = near-mono warm
+  footage + paper beats (banner/note/stickies/list/stamp/doc/strike/bubble), captions y≈1440, cards from y≈880 (under
+  the chin). Shared plumbing in `src/styles/common/`. Fix whisper spelling with `npm run fix-words <slug> "a=b"`.
 - Reference reels for style analysis go in `references/` (gitignored, never committed).
 
 ## Map
