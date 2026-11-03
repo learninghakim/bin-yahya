@@ -23,6 +23,7 @@ if (!existsSync(modelFile)) {
   const url = `https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-${model}.bin`;
   const r = spawnSync("curl", ["-fL", "--retry", "3", "-o", modelFile + ".part", url], { stdio: "inherit" });
   if (r.status !== 0) {
+    spawnSync("rm", ["-f", modelFile + ".part"]);
     console.error(`\n✗ Could not download ${url}\n  If huggingface.co is blocked by the network policy, allow it, or copy ggml-${model}.bin into montage-system/.whisper/ manually.`);
     process.exit(1);
   }
