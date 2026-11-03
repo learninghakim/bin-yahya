@@ -1,0 +1,5 @@
+node_modules
+out
+.whisper
+# Raw footage IS tracked (so it can be uploaded via GitHub). Temp files are not:
+public/raw/*.tmp.*

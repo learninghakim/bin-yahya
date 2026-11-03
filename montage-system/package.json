@@ -1,0 +1,33 @@
+{
+  "name": "montage-system",
+  "version": "1.0.0",
+  "description": "Talking-head Reels montage system (Remotion)",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "remotion studio",
+    "probe": "node scripts/probe.mjs",
+    "transcribe": "node scripts/transcribe.mjs",
+    "new": "node scripts/new-video.mjs",
+    "still": "node scripts/stills.mjs",
+    "render": "node scripts/render.mjs",
+    "lint": "eslint src && tsc"
+  },
+  "dependencies": {
+    "@remotion/captions": "4.0.532",
+    "@remotion/cli": "4.0.532",
+    "@remotion/fonts": "4.0.532",
+    "@remotion/install-whisper-cpp": "4.0.532",
+    "@remotion/media-parser": "4.0.532",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.532"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.532",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.39.5",
+    "typescript": "5.9.3"
+  }
+}
