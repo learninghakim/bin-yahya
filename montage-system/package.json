@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "remotion studio",
+    "fetch-raw": "node scripts/fetch-raw.mjs",
     "probe": "node scripts/probe.mjs",
     "transcribe": "node scripts/transcribe.mjs",
     "new": "node scripts/new-video.mjs",

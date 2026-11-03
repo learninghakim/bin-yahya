@@ -4,8 +4,9 @@ Remotion system that turns a raw talking-head clip into an Instagram Reel (1080�
 **Each video is just data:** a `ReelSpec` in `src/videos/<slug>.ts`, rendered by the single `<Reel>` composition.
 
 ## Editing procedure (follow in order when the user asks for a montage)
-1. **Find the raw file** in `public/raw/` (naming: `YYYY-MM-DD_slug.mp4`, lowercase, dashes). If it came as a chat
-   attachment, copy it there under that name.
+1. **Get the raw file** into `public/raw/` (naming: `YYYY-MM-DD_slug.mp4`, lowercase, dashes). Raw files are
+   uploaded as GitHub Release assets (repo is public; git can't hold >100MB): `npm run fetch-raw <tag>`.
+   Raw files are gitignored — re-fetch them in a fresh container. Chat attachments: copy under that name.
 2. **Probe:** `npm run probe <slug>` → resolution, fps, audio, silences, `suggestedSegments`
    (written to `briefs/<slug>.probe.json`). Warn if not vertical / no audio.
 3. **Transcribe:** `npm run transcribe <slug>` (default Arabic; `WHISPER_MODEL=large-v3` for best Arabic)
