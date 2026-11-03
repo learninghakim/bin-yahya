@@ -2,30 +2,31 @@
 // Signal sound design — professional CC0 kit (public/sfx/pro, see LICENSE.md).
 // Every sound has a `lead`: seconds from the start of the file to its hit, so a cue at time t
 // is played from t − lead and the impact lands exactly on the word.
-// Variety: repeated cue types rotate through several files (never the same sound twice in a row).
+// Levels: mixed against the voice by measuring the SFX stem alone (voice subtracted) — accents sit 0–6 dB under
+// the voice RMS, UI clicks ~8–10 dB under. Variety: repeated cue types rotate through several files (never the same sound twice in a row).
 // ─────────────────────────────────────────────────────────────────────────────
 import type { Art, Beat, SignalSfx, Widget } from "./types";
 
 export const SIGNAL_SFX: Record<SignalSfx, { file: string; volume: number; lead: number }> = {
-  riser: { file: "sfx/pro/riser.wav", volume: 0.32, lead: 2.15 }, // builds INTO the hit
+  riser: { file: "sfx/pro/riser.wav", volume: 0.5, lead: 2.15 }, // builds INTO the hit
   boom: { file: "sfx/pro/boom.wav", volume: 0.34, lead: 0.45 }, // cinematic low boom
   suck: { file: "sfx/pro/suck.wav", volume: 0.26, lead: 1.3 }, // reverse whoosh into a cut
-  hit: { file: "sfx/pro/hit.wav", volume: 0.5, lead: 0 }, // sub thud
+  hit: { file: "sfx/pro/hit.wav", volume: 0.7, lead: 0 }, // sub thud
   punch: { file: "sfx/pro/punch.wav", volume: 0.32, lead: 0 }, // punchy transient
-  whoosh: { file: "sfx/pro/whoosh.wav", volume: 0.2, lead: 0.12 },
-  whoosh2: { file: "sfx/pro/whoosh2.wav", volume: 0.2, lead: 0.3 },
-  swoosh: { file: "sfx/pro/swoosh.wav", volume: 0.18, lead: 0.45 },
-  whooshLow: { file: "sfx/pro/whooshLow.wav", volume: 0.24, lead: 0.3 },
-  glitch: { file: "sfx/pro/glitch.wav", volume: 0.2, lead: 0.05 },
-  reveal: { file: "sfx/pro/reveal.wav", volume: 0.26, lead: 0.25 },
-  zap: { file: "sfx/pro/zap.wav", volume: 0.16, lead: 0.03 },
-  shutter: { file: "sfx/pro/shutter.wav", volume: 0.3, lead: 0 },
-  pop: { file: "sfx/pro/pop.wav", volume: 0.2, lead: 0 },
-  click: { file: "sfx/pro/click.wav", volume: 0.18, lead: 0 },
-  tick: { file: "sfx/pro/tick.wav", volume: 0.16, lead: 0 },
-  tick2: { file: "sfx/pro/tick2.wav", volume: 0.16, lead: 0 },
-  notify: { file: "sfx/pro/notify.wav", volume: 0.26, lead: 0 },
-  chime: { file: "sfx/pro/chime.wav", volume: 0.28, lead: 0 },
+  whoosh: { file: "sfx/pro/whoosh.wav", volume: 0.3, lead: 0.12 },
+  whoosh2: { file: "sfx/pro/whoosh2.wav", volume: 0.3, lead: 0.3 },
+  swoosh: { file: "sfx/pro/swoosh.wav", volume: 0.28, lead: 0.45 },
+  whooshLow: { file: "sfx/pro/whooshLow.wav", volume: 0.5, lead: 0.3 },
+  glitch: { file: "sfx/pro/glitch.wav", volume: 0.42, lead: 0.05 },
+  reveal: { file: "sfx/pro/reveal.wav", volume: 0.75, lead: 0.25 },
+  zap: { file: "sfx/pro/zap.wav", volume: 0.26, lead: 0.03 },
+  shutter: { file: "sfx/pro/shutter.wav", volume: 0.38, lead: 0 },
+  pop: { file: "sfx/pro/pop.wav", volume: 0.55, lead: 0 },
+  click: { file: "sfx/pro/click.wav", volume: 0.5, lead: 0 },
+  tick: { file: "sfx/pro/tick.wav", volume: 0.6, lead: 0 },
+  tick2: { file: "sfx/pro/tick2.wav", volume: 0.5, lead: 0 },
+  notify: { file: "sfx/pro/notify.wav", volume: 0.45, lead: 0 },
+  chime: { file: "sfx/pro/chime.wav", volume: 0.55, lead: 0 },
 };
 
 type Cue = { name: SignalSfx; at: number };
