@@ -7,3 +7,6 @@ public/raw/*
 
 # Reference reels (third-party content, analysis only)
 references/*.mp4
+
+# Low-res preview renders
+previews
