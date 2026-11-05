@@ -125,10 +125,19 @@ export const chunkPhrases = (words: Word[], maxWords: number, opts: { gap?: numb
       n.s = n.words[0].s;
     }
   }
+  // a line that would flash for under 0.45 s joins its neighbour (next one if close, else previous)
+  for (let i = 0; i < chunks.length; i++) {
+    const c = chunks[i], n = chunks[i + 1], p = chunks[i - 1];
+    if (c.e - c.s >= 0.45 && (!n || n.s - c.s >= 0.45)) continue;
+    const endsSentence = /[.,،؟?!]$/.test(c.words[c.words.length - 1].text);
+    if (n && n.s - c.e < 0.5 && !(endsSentence && p)) { n.words.unshift(...c.words); n.s = c.s; chunks.splice(i, 1); i--; }
+    else if (p && (c.s - p.e < 0.5 || endsSentence)) { p.words.push(...c.words); p.e = c.e; chunks.splice(i, 1); i--; }
+  }
   chunks.forEach((c, i) => {
     const next = chunks[i + 1];
     c.show = c.s - 0.05;
     c.hide = next && next.s - c.e < 0.7 ? next.s - 0.05 : c.e + hold;
+    if (c.hide - c.show < 0.3) c.hide = c.show + 0.3;
     // sentence punctuation added to force line breaks is not displayed (question/exclamation marks are)
     c.words = c.words.map((w) => ({ ...w, text: w.text.replace(/[.,،]+$/, "") }));
   });

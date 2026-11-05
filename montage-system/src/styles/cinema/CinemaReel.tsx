@@ -25,7 +25,8 @@ const CinemaCaptions: React.FC<{ pauses: [number, number][]; words: Word[]; hide
   if (hide.some((h) => t >= h.from && t < h.to)) return null;
   const c = chunks.find((k) => t >= k.show && t < k.hide);
   if (!c) return null;
-  const a = interpolate(t, [c.show, c.show + 0.14, c.hide - 0.1, c.hide], [0, 1, 1, 0], cl);
+  const fd = Math.min(0.14, (c.hide - c.show) / 3);
+  const a = interpolate(t, [c.show, c.show + fd, c.hide - fd, c.hide], [0, 1, 1, 0], cl);
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
       <div dir="rtl" style={{ position: "absolute", top: CI.layout.captionY, left: 60, right: 60, display: "flex", justifyContent: "center", gap: 18, opacity: a, transform: "translateY(-50%)" }}>

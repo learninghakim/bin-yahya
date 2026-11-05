@@ -24,7 +24,8 @@ const PhoneCaptions: React.FC<{ pauses: [number, number][]; words: Word[] }> = (
   const chunks = useMemo(() => chunkPhrases(words, 4, { maxChars: 24, pauses }), [words, pauses]);
   const c = chunks.find((k) => t >= k.show && t < k.hide);
   if (!c) return null;
-  const a = interpolate(t, [c.show, c.show + 0.1, c.hide - 0.08, c.hide], [0, 1, 1, 0], cl);
+  const fd = Math.min(0.1, (c.hide - c.show) / 3);
+  const a = interpolate(t, [c.show, c.show + fd, c.hide - fd, c.hide], [0, 1, 1, 0], cl);
   const s = interpolate(t, [c.show, c.show + 0.18], [0.92, 1], { ...cl, easing: PH.ease.spring });
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
