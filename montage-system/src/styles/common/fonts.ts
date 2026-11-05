@@ -14,10 +14,25 @@ export const styleFontsReady = Promise.all([
   f("Plex", "plex-700-ar.woff2", "700"),
   f("PlexLatin", "plex-400-lat.woff2", "400"),
   f("PlexLatin", "plex-700-lat.woff2", "700"),
+  f("Kufi", "notokufi-500-ar.woff2", "500"),
+  f("Kufi", "notokufi-800-ar.woff2", "800"),
+  f("KufiLatin", "notokufi-500-lat.woff2", "500"),
+  f("KufiLatin", "notokufi-800-lat.woff2", "800"),
+  f("Tajawal", "tajawal-500-ar.woff2", "500"),
+  f("Tajawal", "tajawal-800-ar.woff2", "800"),
+  f("TajawalLatin", "tajawal-500-lat.woff2", "500"),
+  f("TajawalLatin", "tajawal-800-lat.woff2", "800"),
+  f("Amiri", "amiri-400-ar.woff2", "400"),
+  f("Amiri", "amiri-700-ar.woff2", "700"),
+  f("AmiriLatin", "amiri-400-lat.woff2", "400"),
+  f("AmiriLatin", "amiri-700-lat.woff2", "700"),
 ]);
 
 export const FONT = {
   punch: "Changa, ChangaLatin, Lalezar, sans-serif",
   paper: "Marhey, MarheyLatin, sans-serif",
   news: "Plex, PlexLatin, sans-serif",
+  pulse: "Kufi, KufiLatin, sans-serif",
+  phone: "Tajawal, TajawalLatin, sans-serif",
+  cinema: "Amiri, AmiriLatin, serif",
 } as const;

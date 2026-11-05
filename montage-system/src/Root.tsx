@@ -7,7 +7,10 @@ import { videos } from "./videos";
 import * as Ex from "./examples/Examples";
 import { calculateSignalMetadata, SignalReel } from "./styles/signal/SignalReel";
 import { signalVideos } from "./videos/signal";
-import { newsVideos, paperVideos, punchVideos } from "./videos/styles";
+import { cinemaVideos, newsVideos, paperVideos, phoneVideos, pulseVideos, punchVideos } from "./videos/styles";
+import { calculatePulseMetadata, PulseReel } from "./styles/pulse/PulseReel";
+import { calculatePhoneMetadata, PhoneReel } from "./styles/phone/PhoneReel";
+import { calculateCinemaMetadata, CinemaReel } from "./styles/cinema/CinemaReel";
 import { calculateNewsMetadata, NewsReel } from "./styles/news/NewsReel";
 import { calculatePunchMetadata, PunchReel } from "./styles/punch/PunchReel";
 import { calculatePaperMetadata, PaperReel } from "./styles/paper/PaperReel";
@@ -44,6 +47,17 @@ export const RemotionRoot: React.FC = () => (
       ))}
       {paperVideos.map((spec) => (
         <Composition key={spec.id} id={spec.id} component={PaperReel} {...common} durationInFrames={30 * VIDEO.fps} defaultProps={{ spec }} calculateMetadata={calculatePaperMetadata} />
+      ))}
+    </Folder>
+    <Folder name="Styles-v2">
+      {pulseVideos.map((spec) => (
+        <Composition key={spec.id} id={spec.id} component={PulseReel} {...common} durationInFrames={30 * VIDEO.fps} defaultProps={{ spec }} calculateMetadata={calculatePulseMetadata} />
+      ))}
+      {phoneVideos.map((spec) => (
+        <Composition key={spec.id} id={spec.id} component={PhoneReel} {...common} durationInFrames={30 * VIDEO.fps} defaultProps={{ spec }} calculateMetadata={calculatePhoneMetadata} />
+      ))}
+      {cinemaVideos.map((spec) => (
+        <Composition key={spec.id} id={spec.id} component={CinemaReel} {...common} durationInFrames={30 * VIDEO.fps} defaultProps={{ spec }} calculateMetadata={calculateCinemaMetadata} />
       ))}
     </Folder>
     <Folder name="Examples">

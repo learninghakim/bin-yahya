@@ -45,6 +45,13 @@ Remotion system that turns a raw talking-head clip into an Instagram Reel (1080�
   per sentence, emoji/title/number/slam/cta, `emphasis` word colours, `bw` windows, `flashes`. Paper = near-mono warm
   footage + paper beats (banner/note/stickies/list/stamp/doc/strike/bubble), captions y≈1440, cards from y≈880 (under
   the chin). Shared plumbing in `src/styles/common/`. Fix whisper spelling with `npm run fix-words <slug> "a=b"`.
+- **v2: Pulse / Phone / Cinema** (`src/styles/{pulse,phone,cinema}`, specs `src/videos/styles/*-v2 ids`, Studio folder
+  "Styles-v2"). Rules learned from v1 QA: a container appears only WITH its first element (no empty cards / "+0%"),
+  one graphic at a time with face-only gaps, graphics are drawings not text boxes repeating the captions, captions
+  never dim words and break on real audio pauses (`npm run pauses <slug>` → `captions/<slug>.pauses.json`, read by
+  `chunkPhrases`), never end a line on a function word; add "." to a word with `fix-words` to force a sentence break.
+  Run `npm run check-styles [id]` (SHOW=1 prints caption lines) + stills before rendering. `npm run render` now
+  loudness-normalises to −14 LUFS / −1.5 dBTP (`--no-loudnorm` to skip).
 - Reference reels for style analysis go in `references/` (gitignored, never committed).
 
 ## Map
